@@ -1,0 +1,86 @@
+.reserva-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reserva-card h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.reserva-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.reserva-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reserva-campo label {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.reserva-campo input,
+.reserva-campo select {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #ffffff;
+  color: #1c1917;
+}
+
+.reserva-campo input[aria-invalid="true"] {
+  border-color: #b91c1c;
+}
+
+.reserva-acciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.reserva-boton {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #1d4ed8;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.reserva-campo input:focus-visible,
+.reserva-campo select:focus-visible,
+.reserva-boton:focus-visible {
+  outline: 3px solid #1d4ed8;
+  outline-offset: 2px;
+}
+
+.reserva-error {
+  margin: 0;
+  color: #b91c1c;
+  font-size: 0.9rem;
+}
+
+.reserva-estado {
+  margin: 0;
+  color: #15803d;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .reserva-grid {
+    grid-template-columns: 1fr;
+  }
+}

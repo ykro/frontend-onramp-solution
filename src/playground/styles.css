@@ -1,0 +1,90 @@
+:root {
+  color-scheme: light;
+  --fondo: #f8f7f4;
+  --superficie: #ffffff;
+  --borde: #d6d3cb;
+  --texto: #1c1917;
+  --texto-suave: #57534e;
+  --acento: #1d4ed8;
+  --acento-suave: #eff6ff;
+  --error: #b91c1c;
+  --exito: #15803d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+.shell {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+.shell-header {
+  margin-bottom: 24px;
+}
+
+.shell-header h1 {
+  margin: 0 0 6px;
+  font-size: 1.85rem;
+}
+
+.shell-header p {
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  appearance: none;
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.tab-activa {
+  border-color: var(--acento);
+  background: var(--acento-suave);
+  color: var(--acento);
+}
+
+.tab:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--acento);
+  outline-offset: 2px;
+}
+
+.panel {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.panel-resumen {
+  margin: 0 0 20px;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
