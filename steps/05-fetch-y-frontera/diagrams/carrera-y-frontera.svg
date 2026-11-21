@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="async-title async-desc">
+  <title id="async-title">Cancelación de carrera con AbortController y frontera cliente/servidor</title>
+  <desc id="async-desc">Arriba: línea de tiempo donde la búsqueda lenta de 120 ms por "a" se cancela con AbortController al escribir "ab" (15 ms) para no pisar la pantalla. Abajo: corte de frontera entre el componente de cliente BuscadorRapido.tsx con "use client", el contrato compartido contrato.ts y el módulo privado secreto.server.ts.</desc>
+  <defs>
+    <marker id="async-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2563EB"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="400" rx="12" fill="#F8F7F4"/>
+
+  <text x="36" y="36" fill="#0F172A" font-size="17" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Paso 5: Carrera de búsquedas y frontera cliente / servidor</text>
+
+  <!-- Bloque A: Línea de tiempo AbortController -->
+  <rect x="36" y="54" width="888" height="170" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="54" y="80" fill="#1D4ED8" font-size="12" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">A. CANCELACIÓN CON AbortController (t = 0 ms a 140 ms)</text>
+
+  <!-- Eje de tiempo -->
+  <line x1="150" y1="196" x2="884" y2="196" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="150" y="212" fill="#64748B" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">0 ms</text>
+  <text x="270" y="212" fill="#64748B" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">20 ms</text>
+  <text x="365" y="212" fill="#64748B" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">35 ms</text>
+  <text x="770" y="212" fill="#64748B" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">120 ms</text>
+
+  <!-- Petición 1 ("a", 120 ms) -->
+  <text x="54" y="116" fill="#0F172A" font-size="12" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">buscar("a")</text>
+  <rect x="150" y="100" width="120" height="24" rx="4" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.2"/>
+  <text x="210" y="116" fill="#991B1B" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">en curso...</text>
+  <rect x="270" y="100" width="520" height="24" rx="4" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="530" y="116" fill="#991B1B" font-size="11" font-weight="600" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" text-anchor="middle">abort() al teclear "b" — respuesta lenta (120 ms) descartada</text>
+
+  <!-- Línea vertical de abort() -->
+  <line x1="270" y1="94" x2="270" y2="196" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- Petición 2 ("ab", 15 ms) -->
+  <text x="54" y="164" fill="#0F172A" font-size="12" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">buscar("ab")</text>
+  <rect x="270" y="148" width="110" height="24" rx="4" fill="#DCFCE7" stroke="#4ADE80" stroke-width="1.2"/>
+  <text x="325" y="164" fill="#166534" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">15 ms (listo)</text>
+  <text x="394" y="164" fill="#166534" font-size="12" font-weight="600" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Muestra "Resultado nuevo" y nada lo sobrescribe</text>
+
+  <!-- Bloque B: Frontera cliente / servidor -->
+  <rect x="36" y="242" width="888" height="134" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="54" y="268" fill="#1D4ED8" font-size="12" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">B. FRONTERA CLIENTE / SERVIDOR</text>
+
+  <!-- Navegador -->
+  <rect x="54" y="284" width="256" height="74" rx="8" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.2"/>
+  <text x="70" y="306" fill="#1D4ED8" font-size="11" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">NAVEGADOR ("use client";)</text>
+  <text x="70" y="326" fill="#0F172A" font-size="12" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">BuscadorRapido.tsx</text>
+  <text x="70" y="344" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">useState · useEffect · eventos</text>
+
+  <!-- Flecha permitida -->
+  <line x1="310" y1="321" x2="368" y2="321" stroke="#2563EB" stroke-width="2" marker-end="url(#async-arrow)"/>
+  <text x="339" y="312" fill="#1D4ED8" font-size="10" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" text-anchor="middle">importa</text>
+
+  <!-- Contrato compartido -->
+  <rect x="372" y="284" width="212" height="74" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2"/>
+  <text x="388" y="306" fill="#166534" font-size="11" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">PÚBLICO / COMPARTIDO</text>
+  <text x="388" y="326" fill="#0F172A" font-size="12" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">contrato.ts</text>
+  <text x="388" y="344" fill="#475569" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">LIMITE_RESULTADOS · tipos</text>
+
+  <!-- Línea de corte -->
+  <line x1="622" y1="276" x2="622" y2="366" stroke="#DC2626" stroke-width="2" stroke-dasharray="5,4"/>
+  <rect x="594" y="310" width="56" height="20" rx="4" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1"/>
+  <text x="622" y="324" fill="#B91C1C" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">CORTE</text>
+
+  <!-- Servidor -->
+  <rect x="660" y="284" width="246" height="74" rx="8" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.2"/>
+  <text x="676" y="306" fill="#B91C1C" font-size="11" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">SOLO SERVIDOR</text>
+  <text x="676" y="326" fill="#0F172A" font-size="12" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">secreto.server.ts</text>
+  <text x="676" y="344" fill="#991B1B" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">API_SECRET_KEY (no importar)</text>
+</svg>

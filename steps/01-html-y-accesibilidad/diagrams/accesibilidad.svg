@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="a11y-title a11y-desc">
+  <title id="a11y-title">Cómo el navegador expone roles accesibles desde HTML semántico</title>
+  <desc id="a11y-desc">El navegador traduce etiquetas semánticas como section, label, input type number, select, button y atributos aria-invalid y aria-describedby a roles del árbol de accesibilidad que leen el teclado y Testing Library ByRole.</desc>
+  <defs>
+    <marker id="a11y-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2563EB"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="360" rx="12" fill="#F8F7F4"/>
+
+  <text x="36" y="38" fill="#0F172A" font-size="17" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Paso 1: De HTML semántico a roles accesibles</text>
+  <text x="36" y="58" fill="#475569" font-size="12" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">El navegador construye el árbol de accesibilidad a partir de etiquetas reales, no de &lt;div&gt; genéricos.</text>
+
+  <!-- Columna 1: HTML semántico -->
+  <rect x="36" y="80" width="286" height="248" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="54" y="106" fill="#1D4ED8" font-size="12" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">1. HTML EN TarjetaReserva.tsx</text>
+  <line x1="54" y1="116" x2="304" y2="116" stroke="#E2E8F0" stroke-width="1"/>
+
+  <rect x="54" y="128" width="250" height="32" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="64" y="148" fill="#0F172A" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">&lt;section aria-labelledby="..."&gt;</text>
+
+  <rect x="54" y="168" width="250" height="32" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="64" y="188" fill="#0F172A" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">&lt;label htmlFor&gt; + &lt;input number&gt;</text>
+
+  <rect x="54" y="208" width="250" height="32" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="64" y="228" fill="#0F172A" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">&lt;select&gt; y &lt;button type="submit"&gt;</text>
+
+  <rect x="54" y="248" width="250" height="32" rx="6" fill="#FEF2F2" stroke="#FECACA" stroke-width="1"/>
+  <text x="64" y="268" fill="#991B1B" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">aria-invalid + aria-describedby</text>
+
+  <rect x="54" y="288" width="250" height="28" rx="6" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="64" y="306" fill="#166534" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">&lt;p role="status"&gt;confirmación&lt;/p&gt;</text>
+
+  <!-- Flecha 1 -> 2 -->
+  <line x1="322" y1="204" x2="362" y2="204" stroke="#2563EB" stroke-width="2" marker-end="url(#a11y-arrow)"/>
+
+  <!-- Columna 2: Árbol de accesibilidad -->
+  <rect x="366" y="80" width="254" height="248" rx="10" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="384" y="106" fill="#1D4ED8" font-size="12" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">2. ROLES DEL NAVEGADOR</text>
+  <line x1="384" y1="116" x2="602" y2="116" stroke="#DBEAFE" stroke-width="1"/>
+
+  <text x="384" y="148" fill="#0F172A" font-size="12" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">region</text>
+  <text x="454" y="148" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">"Reservar sala..."</text>
+
+  <text x="384" y="188" fill="#0F172A" font-size="12" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">spinbutton</text>
+  <text x="476" y="188" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">"Cantidad..."</text>
+
+  <text x="384" y="228" fill="#0F172A" font-size="12" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">combobox / button</text>
+  <text x="524" y="228" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">enfocables</text>
+
+  <text x="384" y="268" fill="#991B1B" font-size="12" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">alert</text>
+  <text x="434" y="268" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">ligado por id al input</text>
+
+  <text x="384" y="306" fill="#166534" font-size="12" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">status</text>
+  <text x="442" y="306" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">anuncia la reserva</text>
+
+  <!-- Flecha 2 -> 3 -->
+  <line x1="620" y1="204" x2="660" y2="204" stroke="#2563EB" stroke-width="2" marker-end="url(#a11y-arrow)"/>
+
+  <!-- Columna 3: Quienes lo consumen -->
+  <rect x="664" y="80" width="260" height="114" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="682" y="106" fill="#0F172A" font-size="13" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Teclado y lector de pantalla</text>
+  <text x="682" y="130" fill="#475569" font-size="12" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">• Tab recorre cada control real</text>
+  <text x="682" y="150" fill="#475569" font-size="12" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">• Flechas cambian horario o número</text>
+  <text x="682" y="170" fill="#475569" font-size="12" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">• Enter envía el formulario</text>
+
+  <rect x="664" y="214" width="260" height="114" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="682" y="240" fill="#0F172A" font-size="13" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Testing Library (ByRole)</text>
+  <text x="682" y="264" fill="#1D4ED8" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">getByRole("spinbutton")</text>
+  <text x="682" y="284" fill="#1D4ED8" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">getByRole("combobox")</text>
+  <text x="682" y="304" fill="#1D4ED8" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">getByRole("alert") / ("status")</text>
+</svg>

@@ -1,25 +1,35 @@
 import { useState } from "react";
-import { TarjetaReserva } from "../lab01-html-y-accesibilidad/TarjetaReserva";
-import { ListaGastos } from "../lab02-estado-y-tipos/ListaGastos";
-import { BuscadorRapido } from "../lab03-async-y-frontera/BuscadorRapido";
+import { TarjetaReserva } from "../paso01-html-y-accesibilidad/TarjetaReserva";
+import { ListaGastos } from "../paso03-estado-inmutable/ListaGastos";
+import { BuscadorRapido } from "../paso05-fetch-y-frontera/BuscadorRapido";
 
-type LabId = "lab01" | "lab02" | "lab03";
+type PasoId = "paso01" | "paso02" | "paso03" | "paso04" | "paso05";
 
-const TABS: { id: LabId; titulo: string; resumen: string }[] = [
+const TABS: { id: PasoId; titulo: string; resumen: string }[] = [
   {
-    id: "lab01",
-    titulo: "Lab 01: HTML y accesibilidad",
-    resumen: "HTML semántico, navegación por teclado, validación ARIA, Grid y Flexbox.",
+    id: "paso01",
+    titulo: "Paso 1: HTML y accesibilidad",
+    resumen: "HTML semántico, navegación con teclado, roles ByRole y validación con aria-invalid y aria-describedby.",
   },
   {
-    id: "lab02",
-    titulo: "Lab 02: Estado y tipos",
-    resumen: "Estado inmutable en React, claves estables al filtrar y lectura segura de números.",
+    id: "paso02",
+    titulo: "Paso 2: CSS, layout y foco",
+    resumen: "CSS Grid de 2 columnas, Flexbox para la barra de acciones y foco visible con :focus-visible.",
   },
   {
-    id: "lab03",
-    titulo: "Lab 03: Async y frontera",
-    resumen: "Errores HTTP en fetch, cancelación con AbortController y frontera cliente/servidor.",
+    id: "paso03",
+    titulo: "Paso 3: Estado inmutable",
+    resumen: "Actualización inmutable de arreglos con [...prev, nuevo] (Object.is) y key estable por id al filtrar.",
+  },
+  {
+    id: "paso04",
+    titulo: "Paso 4: Tipos y formularios",
+    resumen: "Validación y estrechamiento de tipos (narrowing) en TypeScript para convertir texto de inputs sin usar as number.",
+  },
+  {
+    id: "paso05",
+    titulo: "Paso 5: Fetch y frontera",
+    resumen: "Verificación de response.ok, cancelación con AbortController y separación entre \"use client\" y secreto.server.ts.",
   },
 ];
 
@@ -54,17 +64,17 @@ function buscarSimulado(termino: string, signal: AbortSignal): Promise<string[]>
 }
 
 export function App() {
-  const [activo, setActivo] = useState<LabId>("lab01");
+  const [activo, setActivo] = useState<PasoId>("paso01");
   const actual = TABS.find((tab) => tab.id === activo) ?? TABS[0];
 
   return (
     <div className="shell">
       <header className="shell-header">
         <h1>Onramp Frontend</h1>
-        <p>Tres ejercicios prácticos de 20 minutos para dominar la base de React y TypeScript.</p>
+        <p>Cinco pasos independientes para dominar la base de HTML, CSS, React, TypeScript y Next.js.</p>
       </header>
 
-      <nav className="tabs" role="tablist" aria-label="Laboratorios de práctica">
+      <nav className="tabs" role="tablist" aria-label="Pasos de práctica">
         {TABS.map((tab) => {
           const seleccionado = tab.id === activo;
           return (
@@ -84,9 +94,9 @@ export function App() {
 
       <main className="panel" role="tabpanel">
         {actual ? <p className="panel-resumen">{actual.resumen}</p> : null}
-        {activo === "lab01" ? <TarjetaReserva /> : null}
-        {activo === "lab02" ? <ListaGastos /> : null}
-        {activo === "lab03" ? <BuscadorRapido buscar={buscarSimulado} /> : null}
+        {activo === "paso01" || activo === "paso02" ? <TarjetaReserva /> : null}
+        {activo === "paso03" || activo === "paso04" ? <ListaGastos /> : null}
+        {activo === "paso05" ? <BuscadorRapido buscar={buscarSimulado} /> : null}
       </main>
     </div>
   );

@@ -1,4 +1,5 @@
 import { type FormEvent, useState } from "react";
+import { leerPrecioSeguro } from "../paso04-tipos-y-formularios/precioSeguro";
 
 export interface Gasto {
   id: string;
@@ -11,18 +12,6 @@ const GASTOS_INICIALES: Gasto[] = [
   { id: "g-2", concepto: "Almuerzo", monto: 75 },
   { id: "g-3", concepto: "Libro de React", monto: 180 },
 ];
-
-export function leerPrecioSeguro(texto: string): number | null {
-  const limpio = texto.trim();
-  if (limpio === "") {
-    return null;
-  }
-  const numero = Number(limpio);
-  if (!Number.isFinite(numero) || numero <= 0) {
-    return null;
-  }
-  return numero;
-}
 
 function FilaGasto({ gasto }: { gasto: Gasto }) {
   const [nota, setNota] = useState("");
