@@ -1,4 +1,4 @@
-// Paso 5 (~25 min): esta función ya está bien escrita. Tu trabajo es probarla en
+// Paso 5: esta función ya está bien escrita. Tu trabajo es probarla en
 // tests/paso05.test.tsx. No la edites para hacer pasar tus tests.
 export function calcularTotalConDescuento(
   precio: number,

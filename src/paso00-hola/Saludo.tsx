@@ -1,4 +1,4 @@
-// Paso 0 (~25 min): tu primer componente de React.
+// Paso 0: tu primer componente de React.
 // Ábrelo en el navegador con `npm run dev` (pestaña Paso 0) y verifica con `npm run check:paso0`.
 import { useState } from "react";
 
