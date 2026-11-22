@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Saludo } from "../paso00-hola/Saludo";
 import { TarjetaReserva } from "../paso01-html-accesibilidad-y-css/TarjetaReserva";
 import { ListaGastos } from "../paso02-estado-inmutable/ListaGastos";
+import { leerPrecioSeguro } from "../paso03-tipos-y-formularios/precioSeguro";
 import { BuscadorRapido } from "../paso04-fetch-y-frontera/BuscadorRapido";
 import { calcularTotalConDescuento } from "../paso05-pruebas/calcularDescuento";
 import { sumaElDescuento } from "../paso05-pruebas/versionesConBug";
@@ -46,9 +47,25 @@ const TABS: { id: PasoId; titulo: string; resumen: string }[] = [
   },
 ];
 
+function VistaPrecioSeguro() {
+  const [texto, setTexto] = useState("");
+  const resultado = leerPrecioSeguro(texto);
+  return (
+    <section aria-labelledby="titulo-paso3">
+      <h2 id="titulo-paso3">Prueba leerPrecioSeguro</h2>
+      <label htmlFor="monto-paso3">Monto escrito por la persona</label>
+      <input id="monto-paso3" value={texto} onChange={(e) => setTexto(e.target.value)} />
+      <p>
+        Devuelve: <code>{resultado === null ? "null" : String(resultado)}</code> (tipo{" "}
+        <code>{resultado === null ? "null" : typeof resultado}</code>)
+      </p>
+    </section>
+  );
+}
+
 function buscarSimulado(termino: string, signal: AbortSignal): Promise<string[]> {
   const limpio = termino.trim().toLowerCase();
-  const demoraMs = limpio.length <= 2 ? 120 : 15;
+  const demoraMs = limpio.length <= 1 ? 120 : 15;
 
   return new Promise((resolve, reject) => {
     const timer = window.setTimeout(() => {
@@ -209,7 +226,8 @@ export function App() {
           <Saludo nombre="Ana" temas={["HTML y CSS", "React", "TypeScript"]} />
         ) : null}
         {activo === "paso01" ? <TarjetaReserva /> : null}
-        {activo === "paso02" || activo === "paso03" ? <ListaGastos /> : null}
+        {activo === "paso02" ? <ListaGastos /> : null}
+        {activo === "paso03" ? <VistaPrecioSeguro /> : null}
         {activo === "paso04" ? <BuscadorRapido buscar={buscarSimulado} /> : null}
         {activo === "paso05" ? <VistaPruebasDescuento /> : null}
       </main>

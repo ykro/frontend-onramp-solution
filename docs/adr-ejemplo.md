@@ -5,11 +5,11 @@ En el curso encontrarás un archivo `ARCHITECTURE_DECISIONS.md` que documenta de
 ## Ejemplo concreto
 
 ```markdown
-## ADR-003: Validar precios en la entrada con narrowing en lugar de `as number`
+## ADR-003: Guardar los montos en centavos, como enteros
 - **Estado:** Aceptada
-- **Contexto:** Los `<input>` del navegador entregan siempre texto (`string`). Usar `as number` oculta `NaN`, vacíos y valores negativos.
-- **Decisión:** Convertir cada campo con `trim()`, `Number()` y `Number.isFinite()`, devolviendo `number | null`.
-- **Consecuencias:** Escribimos 6 líneas más de validación, pero evitamos totales rotos en la interfaz y en las pruebas.
+- **Contexto:** En JavaScript, `0.1 + 0.2` da `0.30000000000000004`. Al sumar muchos gastos, el total en pantalla terminaba con decimales que nadie escribió.
+- **Decisión:** Guardar cada monto como un entero en centavos (`Q12.50` se guarda como `1250`) y dividir entre 100 solo al mostrarlo.
+- **Consecuencias:** Las sumas son exactas. A cambio, cada pantalla que muestra un monto tiene que formatearlo, y un descuido muestra `1250` en lugar de `Q12.50`.
 ```
 
 Cuando abras `ARCHITECTURE_DECISIONS.md`, lee primero el **Contexto** para entender el problema, luego la **Decisión** para seguir la convención del repositorio y al final las **Consecuencias** para saber qué compensación asumió el equipo.

@@ -26,6 +26,10 @@ Función de JavaScript con nombre en mayúscula que devuelve JSX y se usa como u
 
 Sistemas nativos de maquetación en CSS. [CSS Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout) alinea elementos en una sola dimensión (una fila o una columna), como una barra de acciones con botón y mensaje de estado. [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout) distribuye contenido en filas y columnas al mismo tiempo, como un formulario de dos columnas.
 
+## DOM
+
+El árbol de objetos que arma el navegador a partir del HTML ([MDN: DOM](https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model/Introduction)). Cada etiqueta es un nodo con hijos, y lo que ves en pantalla es ese árbol. React calcula cómo debería quedar y cambia solo los nodos necesarios.
+
 ## Estado y `useState`
 
 Lo que un componente recuerda entre un render y otro, como un contador o el texto de un campo ([React: El estado](https://es.react.dev/learn/state-a-components-memory)). `useState` devuelve el valor actual y una función para cambiarlo; llamar a esa función hace que React vuelva a dibujar el componente. Cambiar una variable normal no avisa nada a React.
@@ -54,9 +58,17 @@ Identificador único que pasas a cada elemento de una lista en React ([React: Ke
 
 Proceso mediante el cual TypeScript deduce un tipo más específico después de una comprobación en tiempo de ejecución ([TypeScript: Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)). En lugar de forzar un tipo con `as number` ([Type Assertions](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions)), validas el dato con `trim()`, `Number()` y `Number.isFinite()` para garantizar que el valor sea un número válido.
 
+## npm
+
+El gestor de paquetes que viene con Node.js ([docs.npmjs.com](https://docs.npmjs.com/about-npm)). `npm install` descarga las dependencias que lista `package.json` y `npm run <script>` corre los comandos del proyecto, como `npm run dev` o `npm run check:paso1`.
+
 ## `Object.is`
 
 Método estándar de JavaScript ([MDN: `Object.is()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)) que React usa para comparar el estado anterior con el nuevo. Cuando mutas un arreglo con `.push()`, la referencia en memoria sigue siendo la misma, `Object.is` devuelve `true` y React no vuelve a dibujar el componente.
+
+## Promesa
+
+Un valor que llegará después, como la respuesta de un `fetch` ([MDN: Promise](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise)). Se resuelve con un valor o se rechaza con un error. Lo lees con `await` dentro de una función `async`, o con `.then` y `.catch`.
 
 ## Props
 
@@ -81,3 +93,11 @@ Práctica de ejecutar automáticamente las pruebas y verificaciones de estilo en
 ## Versión con un bug
 
 En el Paso 5, una copia de `calcularTotalConDescuento` con un error a propósito. `npm run check:paso5` corre tus tests contra cada versión con un bug; si todos siguen en verde, tus tests no distinguen la función correcta de una rota.
+
+## `useEffect`
+
+Hook de React que ejecuta código después de dibujar, por ejemplo una búsqueda ([React: useEffect](https://es.react.dev/reference/react/useEffect)). Vuelve a correr cuando cambia algún valor de su lista de dependencias. La función que devuelves es la limpieza: corre antes de la siguiente ejecución y cuando el componente desaparece, y ahí se cancela lo que quedó pendiente.
+
+## Vite
+
+La herramienta que levanta el servidor de desarrollo y arma el proyecto para producción ([vite.dev](https://vite.dev/guide/)). `npm run dev` recarga la página cada vez que guardas un archivo y `npm run build` genera la carpeta `dist` con el JavaScript que descarga el usuario.

@@ -2,7 +2,7 @@
 
 ![Paso 1. HTML semántico, accesibilidad y CSS](diagrams/accesibilidad.svg)
 
-Este paso toma unos 35 minutos.
+Este paso toma unos 45 minutos.
 
 ## Antes de empezar
 
@@ -21,6 +21,7 @@ Un formulario armado con `<div>` y `<span>` se ve bien con mouse, pero no funcio
 - **ARIA.** Son atributos que agregan información cuando el HTML no alcanza. Aquí usas tres. `aria-invalid` marca un campo con error, `aria-describedby` apunta al `id` del texto que explica el error y `role="alert"` o `role="status"` hacen que el lector de pantalla anuncie un mensaje que aparece de repente. La primera regla de ARIA es usar HTML nativo siempre que exista.
 - **CSS básico.** Un selector elige elementos (`.reserva-grid` elige los que tienen esa clase) y las declaraciones dentro de llaves cambian cómo se ven. Una pseudoclase como `:hover` o `:focus-visible` aplica estilos solo en cierto estado.
 - **Grid y Flexbox.** Grid acomoda en filas y columnas a la vez, útil para un formulario de dos columnas. Flexbox acomoda en una sola dirección, útil para una fila con un botón y un mensaje.
+- **Media query.** `@media (max-width: 600px) { ... }` aplica las reglas de adentro solo cuando la ventana mide 600 px o menos. Así el mismo formulario pasa de dos columnas a una en un celular. El test no revisa este punto; compruébalo achicando la ventana.
 
 ## Qué vas a hacer
 

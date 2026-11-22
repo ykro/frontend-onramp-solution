@@ -2,7 +2,7 @@
 
 ![Paso 3. Tipos y formularios en TypeScript](diagrams/narrowing-tipos.svg)
 
-Este paso toma unos 15 minutos.
+Este paso toma unos 20 minutos.
 
 ## Antes de empezar
 
@@ -16,7 +16,7 @@ Todo lo que escribe una persona en un `<input>` llega como texto, aunque el camp
 
 ## Qué vas a hacer
 
-- **Leer.** Abre [precioSeguro.ts](../../src/paso03-tipos-y-formularios/precioSeguro.ts). En la pestaña **Paso 3** de `npm run dev`, intenta agregar un gasto con monto vacío, con `abc` y con `-15`. Anota qué se guarda en cada caso.
+- **Leer.** Abre [precioSeguro.ts](../../src/paso03-tipos-y-formularios/precioSeguro.ts). En la pestaña **Paso 3** de `npm run dev`, escribe un monto vacío, `abc`, `-15` y ` 12 ` y anota qué devuelve hoy `leerPrecioSeguro` en cada caso. Antes de cada prueba, predice el resultado.
 - **Debuguear.** Corre `npm run check:paso3`. Cada línea del test es un caso; fíjate cuál falla primero y qué devolvió la función.
 - **Escribir.** Reemplaza el atajo por una validación que cumpla todos los casos del `TODO`, sin usar `as`.
 

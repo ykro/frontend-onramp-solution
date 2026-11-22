@@ -2,7 +2,7 @@
 
 ![Paso 5. Tests desde cero con Vitest](diagrams/ciclo-testing.svg)
 
-Este paso toma unos 25 minutos.
+Este paso toma unos 30 minutos.
 
 ## Antes de empezar
 
@@ -19,6 +19,7 @@ Probar a mano haciendo clic se vuelve lento cuando el proyecto crece, y en el cu
 - **Leer.** Abre [calcularDescuento.ts](../../src/paso05-pruebas/calcularDescuento.ts) y escribe en papel qué debería devolver con tres o cuatro entradas distintas, incluyendo entradas inválidas. En la pestaña **Paso 5** puedes comparar la función correcta con una de las versiones con un bug.
 - **Debuguear.** Corre `npm run check:paso5` con el archivo como viene. Lee por qué falla aunque Vitest no muestre ningún test en rojo.
 - **Escribir.** Cambia cada `it.todo` de [tests/paso05.test.tsx](../../tests/paso05.test.tsx) por un test real que llame a `calcularTotalConDescuento`. No importes [versionesConBug.ts](../../src/paso05-pruebas/versionesConBug.ts) en tus tests; el verificador se encarga de cambiar la función por cada versión con un bug.
+- **Comparar.** Abre [tests/paso00.test.tsx](../../tests/paso00.test.tsx). Ese test dibuja un componente, busca el botón por su rol con `getByRole` y lo presiona como lo haría una persona. Sigue el mismo Arrange, Act, Assert que tus tests de función. En el curso escribirás los dos tipos.
 
 ## Criterios de aceptación
 

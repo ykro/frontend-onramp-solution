@@ -2,7 +2,7 @@
 
 ![Paso 4. Fetch, cancelación y la frontera entre cliente y servidor](diagrams/carrera-y-frontera.svg)
 
-Este paso toma unos 30 minutos.
+Este paso toma unos 45 minutos.
 
 ## Antes de empezar
 
@@ -16,7 +16,18 @@ Cuando el frontend habla con un API aparecen tres fallos que llegan a producció
 
 ## Lo mínimo que necesitas saber
 
-- **Promesas y `async`/`await`.** `fetch` devuelve una promesa, un valor que llegará después. `await` espera ese valor dentro de una función `async`; si la promesa se rechaza, `await` lanza el error.
+- **Promesas.** Una promesa es un valor que llegará después, como el resultado de un request. Mientras tanto, el programa sigue. Una promesa termina de dos formas, se resuelve con un valor o se rechaza con un error.
+- **`async` y `await`.** Dentro de una función `async`, `await` espera a que la promesa termine. Si se resolvió, te da el valor; si se rechazó, lanza el error y lo atrapas con `try`/`catch`. Pruébalo en la consola del navegador:
+
+  ```js
+  const respuesta = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  console.log(respuesta.status, respuesta.ok);
+  const datos = await respuesta.json();
+  console.log(datos.title);
+  ```
+
+  Cambia la URL por `/todos/999999` y mira qué pasa con `status` y `ok`. La promesa no se rechazó, aunque el servidor respondió `404`.
+- **`.then` y `.catch`.** Son otra forma de escribir lo mismo sin `await`. `promesa.then(valor => ...)` corre cuando se resuelve y `.catch(error => ...)` cuando se rechaza. En este paso verás las dos formas.
 - **`useEffect`.** Ejecuta código después de dibujar, por ejemplo una búsqueda. Corre de nuevo cuando cambia algo de su lista de dependencias, y la función que devuelves (la limpieza) corre antes de la siguiente ejecución y cuando el componente desaparece.
 - **Cliente y servidor.** El código de cliente corre en el navegador de cada persona y cualquiera puede leerlo con las herramientas del navegador. El código de servidor corre en una máquina tuya y ahí sí pueden vivir llaves y secretos.
 - **`"use client"` en este repo.** Este on-ramp usa Vite, que trata todo como código de cliente e ignora la directiva. La agregas aquí para practicar la convención de Next.js que usarás en el curso, donde sí decide qué corre en el navegador. El test solo revisa que esté en la primera línea y que el componente no importe el módulo con el secreto.

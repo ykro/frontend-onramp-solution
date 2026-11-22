@@ -1,6 +1,6 @@
 # Paso 0. Entorno y tu primer componente de React
 
-Este paso toma unos 25 minutos.
+Este paso toma unos 30 minutos.
 
 ## Antes de empezar
 
@@ -14,7 +14,9 @@ Todo el curso de frontend usa [React](https://react.dev/learn), y React se apoya
 
 ## Lo mínimo que necesitas saber
 
-- **HTML y DOM.** El navegador lee el HTML y arma un árbol de elementos, el DOM. React no escribe HTML a mano; modifica ese árbol por ti.
+- **Terminal.** Es la ventana donde escribes comandos: Terminal en macOS y Linux, PowerShell en Windows. `cd carpeta` entra a una carpeta, `ls` (o `dir` en Windows) muestra lo que hay adentro y `Ctrl+C` detiene el programa que esté corriendo, como el servidor de Vite. Para bajar este repositorio escribe `git clone https://github.com/ykro/frontend-onramp.git` y después `cd frontend-onramp`. Si no tienes `git`, instálalo desde [git-scm.com](https://git-scm.com/downloads).
+- **HTML y DOM.** El navegador lee el HTML y arma un árbol de objetos, el DOM, donde cada etiqueta es un nodo con hijos. Lo que ves en pantalla es ese árbol, no el archivo HTML. React no escribe HTML a mano; calcula cómo debería quedar el árbol y cambia solo los nodos que hacen falta.
+- **Eventos.** Un clic, una tecla o el envío de un formulario producen un evento. En JSX conectas una función a un evento con atributos como `onClick={sumar}` u `onChange={...}`. Pasas la función sin paréntesis; si escribes `onClick={sumar()}`, la ejecutas al dibujar en lugar de esperar el clic.
 - **JSX.** Es la sintaxis parecida a HTML que escribes dentro de un archivo `.tsx`. Lo que va entre llaves, como `{nombre}`, es JavaScript. Dos diferencias con HTML que vas a ver mucho son `className` en lugar de `class` y `htmlFor` en lugar de `for`.
 - **Componente.** Una función con nombre en mayúscula que devuelve JSX, por ejemplo `function Saludo() { return <h2>Hola</h2>; }`. Se usa como si fuera una etiqueta, `<Saludo />`.
 - **Props.** Los atributos que le pasas a un componente, `<Saludo nombre="Ana" />`, llegan como un objeto en el primer parámetro de la función.

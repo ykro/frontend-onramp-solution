@@ -12,7 +12,7 @@ La **Integración Continua (CI)** elimina esa duda. Cada vez que haces `git push
 
 ## Dónde entra en tu flujo de trabajo
 
-1. **Editas y pruebas en local:** resuelves la tarea y corres `npm run verify` (`tsc`, `eslint`, `vitest` y `build`) en tu computadora.
+1. **Editas y pruebas en local:** resuelves la tarea y corres las verificaciones en tu computadora. En el curso será `npm run verify` (`tsc`, `eslint`, `vitest` y `build`); en este on-ramp, `npm run check` y `npm run build`.
 2. **Subes tus cambios:** haces `git add`, `git commit` y `git push` a GitHub.
 3. **Corre el CI automáticamente:** GitHub lee `.github/workflows/ci.yml`, levanta una máquina Ubuntu nueva y ejecuta los mismos comandos sin depender de nada que tengas instalado en tu laptop.
 4. **Lectura del resultado:**

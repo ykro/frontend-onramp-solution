@@ -17,7 +17,7 @@ export default defineConfig({
     alias: versionConBug
       ? [
           {
-            find: /^.*\/paso05-pruebas\/calcularDescuento(\.ts)?$/,
+            find: /^.*\/paso05-pruebas\/calcularDescuento(\.(ts|js))?$/,
             replacement: fileURLToPath(
               new URL("./src/paso05-pruebas/versionesConBug.ts", import.meta.url)
             ),

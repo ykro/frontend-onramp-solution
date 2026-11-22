@@ -19,12 +19,12 @@ Este repositorio contiene la solución verificada de [Frontend On-Ramp](https://
 
 | Paso | Tiempo | Qué practicas | Archivo | Guía |
 | --- | --- | --- | --- | --- |
-| Paso 0 | 25 min | Instalar Node, levantar Vite y escribir tu primer componente con props, `useState` y `map` | [Saludo.tsx](src/paso00-hola/Saludo.tsx) | [steps/00-entorno-y-primer-componente](steps/00-entorno-y-primer-componente/README.md) |
-| Paso 1 | 35 min | HTML semántico, roles y nombres accesibles, errores conectados al campo, Grid, Flexbox y `:focus-visible` | [TarjetaReserva.tsx](src/paso01-html-accesibilidad-y-css/TarjetaReserva.tsx) | [steps/01-html-accesibilidad-y-css](steps/01-html-accesibilidad-y-css/README.md) |
-| Paso 2 | 20 min | Estado inmutable (`Object.is`) y `key` estable al filtrar listas | [ListaGastos.tsx](src/paso02-estado-inmutable/ListaGastos.tsx) | [steps/02-estado-inmutable](steps/02-estado-inmutable/README.md) |
-| Paso 3 | 15 min | Convertir el texto de un `<input>` en número con validación y narrowing, sin `as` | [precioSeguro.ts](src/paso03-tipos-y-formularios/precioSeguro.ts) | [steps/03-tipos-y-formularios](steps/03-tipos-y-formularios/README.md) |
-| Paso 4 | 30 min | `response.ok`, cancelar búsquedas con `AbortController` y la frontera entre cliente y servidor | [BuscadorRapido.tsx](src/paso04-fetch-y-frontera/BuscadorRapido.tsx) | [steps/04-fetch-y-frontera](steps/04-fetch-y-frontera/README.md) |
-| Paso 5 | 25 min | Tests desde cero con Vitest que se ponen en rojo ante una versión con un bug | [tests/paso05.test.tsx](tests/paso05.test.tsx) | [steps/05-pruebas-desde-cero](steps/05-pruebas-desde-cero/README.md) |
+| Paso 0 | 30 min | Instalar Node, levantar Vite y escribir tu primer componente con props, `useState` y `map` | [Saludo.tsx](src/paso00-hola/Saludo.tsx) | [steps/00-entorno-y-primer-componente](steps/00-entorno-y-primer-componente/README.md) |
+| Paso 1 | 45 min | HTML semántico, roles y nombres accesibles, errores conectados al campo, Grid, Flexbox y `:focus-visible` | [TarjetaReserva.tsx](src/paso01-html-accesibilidad-y-css/TarjetaReserva.tsx) | [steps/01-html-accesibilidad-y-css](steps/01-html-accesibilidad-y-css/README.md) |
+| Paso 2 | 30 min | Estado inmutable (`Object.is`) y `key` estable al filtrar listas | [ListaGastos.tsx](src/paso02-estado-inmutable/ListaGastos.tsx) | [steps/02-estado-inmutable](steps/02-estado-inmutable/README.md) |
+| Paso 3 | 20 min | Convertir el texto de un `<input>` en número con validación y narrowing, sin `as` | [precioSeguro.ts](src/paso03-tipos-y-formularios/precioSeguro.ts) | [steps/03-tipos-y-formularios](steps/03-tipos-y-formularios/README.md) |
+| Paso 4 | 45 min | `response.ok`, cancelar búsquedas con `AbortController` y la frontera entre cliente y servidor | [BuscadorRapido.tsx](src/paso04-fetch-y-frontera/BuscadorRapido.tsx) | [steps/04-fetch-y-frontera](steps/04-fetch-y-frontera/README.md) |
+| Paso 5 | 30 min | Tests desde cero con Vitest que se ponen en rojo ante dos versiones con un bug | [tests/paso05.test.tsx](tests/paso05.test.tsx) | [steps/05-pruebas-desde-cero](steps/05-pruebas-desde-cero/README.md) |
 
 ## Verificación
 
