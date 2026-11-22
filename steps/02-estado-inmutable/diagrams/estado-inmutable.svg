@@ -13,7 +13,7 @@
 
   <rect width="960" height="350" rx="12" fill="#F8F7F4"/>
 
-  <text x="36" y="38" fill="#0F172A" font-size="17" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Paso 3: Por qué .push() congela React y [...prev, nuevo] sí redibuja</text>
+  <text x="36" y="38" fill="#0F172A" font-size="17" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Paso 2: Por qué .push() congela React y [...prev, nuevo] sí redibuja</text>
   <text x="36" y="58" fill="#475569" font-size="12" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">React decide si redibuja comparando la referencia anterior y la nueva con Object.is(prev, next).</text>
 
   <!-- Panel Izquierdo: Error (.push) -->

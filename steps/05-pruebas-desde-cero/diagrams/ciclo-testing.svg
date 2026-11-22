@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 920 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="testing-title testing-desc">
+  <title id="testing-title">Ciclo Arrange, Act y Assert en Vitest</title>
+  <desc id="testing-desc">Una prueba automatizada prepara los datos en Arrange, ejecuta la función en Act y verifica el resultado en Assert. Ante una función con bug la prueba falla en rojo; ante código sano pasa en verde.</desc>
+  <defs>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2563EB"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#15803D"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#B91C1C"/>
+    </marker>
+  </defs>
+
+  <rect width="920" height="340" rx="12" fill="#F8F7F4"/>
+
+  <text x="32" y="38" fill="#0F172A" font-size="17" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Paso 5: Estructura Arrange -&gt; Act -&gt; Assert y rojo frente a verde</text>
+  <text x="32" y="58" fill="#475569" font-size="12" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Una buena prueba falla cuando el código tiene un bug y pasa cuando el cálculo es correcto.</text>
+
+  <!-- Fila 1: Arrange -> Act -> Assert -->
+  <rect x="32" y="80" width="256" height="96" rx="10" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.5"/>
+  <rect x="46" y="92" width="84" height="20" rx="4" fill="#EFF6FF"/>
+  <text x="88" y="106" fill="#1D4ED8" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">1. ARRANGE</text>
+  <text x="46" y="130" fill="#0F172A" font-size="12" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Prepara las entradas</text>
+  <text x="46" y="150" fill="#475569" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">precio = 200, porcentaje = 15</text>
+
+  <line x1="288" y1="128" x2="326" y2="128" stroke="#2563EB" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
+
+  <rect x="332" y="80" width="256" height="96" rx="10" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.5"/>
+  <rect x="346" y="92" width="68" height="20" rx="4" fill="#EFF6FF"/>
+  <text x="380" y="106" fill="#1D4ED8" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">2. ACT</text>
+  <text x="346" y="130" fill="#0F172A" font-size="12" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Ejecuta la función bajo prueba</text>
+  <text x="346" y="150" fill="#475569" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">calcularTotalConDescuento(200, 15)</text>
+
+  <line x1="588" y1="128" x2="626" y2="128" stroke="#2563EB" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
+
+  <rect x="632" y="80" width="256" height="96" rx="10" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.5"/>
+  <rect x="646" y="92" width="84" height="20" rx="4" fill="#EFF6FF"/>
+  <text x="688" y="106" fill="#1D4ED8" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">3. ASSERT</text>
+  <text x="646" y="130" fill="#0F172A" font-size="12" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Comprueba el resultado exacto</text>
+  <text x="646" y="150" fill="#475569" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">expect(total).toBe(170)</text>
+
+  <!-- Ramas hacia Rojo y Verde -->
+  <line x1="700" y1="176" x2="250" y2="214" stroke="#B91C1C" stroke-width="1.8" marker-end="url(#arrow-red)"/>
+  <line x1="800" y1="176" x2="670" y2="214" stroke="#15803D" stroke-width="1.8" marker-end="url(#arrow-green)"/>
+
+  <!-- Caja Roja: Código con bug -->
+  <rect x="32" y="218" width="412" height="96" rx="10" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.5"/>
+  <rect x="46" y="230" width="132" height="20" rx="4" fill="#FEE2E2"/>
+  <text x="112" y="244" fill="#B91C1C" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">ROJO ANTE BUG</text>
+  <text x="46" y="268" fill="#0F172A" font-size="12" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">calcularTotalConDescuentoConBug(200, 15)</text>
+  <text x="46" y="288" fill="#7F1D1D" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">Devuelve 230 (sumó 30 en lugar de restarlo)</text>
+  <text x="46" y="304" fill="#7F1D1D" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">La prueba alerta antes de llegar a producción.</text>
+
+  <!-- Caja Verde: Código sano -->
+  <rect x="476" y="218" width="412" height="96" rx="10" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5"/>
+  <rect x="490" y="230" width="144" height="20" rx="4" fill="#DCFCE7"/>
+  <text x="562" y="244" fill="#15803D" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">VERDE ANTE CÓDIGO SANO</text>
+  <text x="490" y="268" fill="#0F172A" font-size="12" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">calcularTotalConDescuento(200, 15)</text>
+  <text x="490" y="288" fill="#14532D" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">Devuelve 170 (y cumple bordes 0 % y 100 %)</text>
+  <text x="490" y="304" fill="#14532D" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Confirmas cambios futuros en milisegundos con Vitest.</text>
+</svg>

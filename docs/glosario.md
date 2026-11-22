@@ -1,18 +1,30 @@
 # Glosario de frontend
 
-Este glosario reúne los conceptos clave que aparecen en los cinco pasos del Onramp Frontend. Cada definición explica cómo se usa en el día a día y enlaza a su documentación oficial.
+Este glosario reúne los conceptos clave que aparecen en los cinco pasos y las guías de lectura del Onramp Frontend. Cada definición explica cómo se usa en el día a día y enlaza a su documentación oficial.
 
 ## AbortController
 
 Interfaz nativa del navegador ([MDN: `AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)) que permite cancelar operaciones asíncronas como peticiones `fetch`. Le pasas `controller.signal` ([`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)) a la búsqueda y llamas a `controller.abort()` cuando el usuario cambia el término o el componente se desmonta, evitando que una respuesta vieja sobrescriba la pantalla.
 
+## ADR (Architecture Decision Record)
+
+Documento breve que registra una decisión técnica importante con su contexto, decisión y consecuencias ([adr.github.io](https://adr.github.io/)). En el curso los encontrarás agrupados en `ARCHITECTURE_DECISIONS.md`. Revisa el [ejemplo de ADR](adr-ejemplo.md) para aprender a leerlos en un minuto.
+
 ## `aria-invalid` y `aria-describedby`
 
 Atributos ARIA para conectar validaciones con lectores de pantalla y pruebas. [`aria-invalid="true"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid) indica que un campo tiene un valor incorrecto. [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) apunta al `id` del elemento que explica el error (por ejemplo, un `<p id="error-cantidad" role="alert">`).
 
+## Arrange -> Act -> Assert
+
+Patrón estándar para estructurar pruebas automatizadas en [Vitest](https://vitest.dev/): primero preparas los datos (**Arrange**), luego ejecutas la función o acción del usuario (**Act**) y al final compruebas el resultado esperado (**Assert**).
+
 ## CSS Flexbox y CSS Grid
 
 Sistemas nativos de maquetación en CSS. [CSS Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout) alinea elementos en una sola dimensión (una fila o una columna), como una barra de acciones con botón y mensaje de estado. [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout) distribuye contenido en filas y columnas al mismo tiempo, como un formulario de dos columnas.
+
+## Firebase Auth y Cloud Firestore
+
+Servicios gestionados de Google para aplicaciones web. [Firebase Auth](https://firebase.google.com/docs/auth) maneja el inicio de sesión y entrega un token Bearer firmado con el `uid` del usuario. [Cloud Firestore](https://firebase.google.com/docs/firestore) guarda datos en colecciones y documentos, ofrece listeners en vivo (`onSnapshot`) y aplica autorización del lado del servidor mediante `firestore.rules`. Revisa la [guía rápida de Firebase](firebase.md).
 
 ## `:focus-visible`
 

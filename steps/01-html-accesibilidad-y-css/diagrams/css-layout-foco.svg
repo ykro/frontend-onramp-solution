@@ -5,8 +5,8 @@
 
   <rect width="960" height="340" rx="12" fill="#F8F7F4"/>
 
-  <text x="36" y="38" fill="#0F172A" font-size="17" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Paso 2: Grid de 2 columnas, Flexbox y :focus-visible</text>
-  <text x="36" y="58" fill="#475569" font-size="12" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Estructura visual de src/paso02-css-layout-y-foco/tarjeta-reserva.css.</text>
+  <text x="36" y="38" fill="#0F172A" font-size="17" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Paso 1 (CSS): Grid de 2 columnas, Flexbox y :focus-visible</text>
+  <text x="36" y="58" fill="#475569" font-size="12" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Estructura visual de src/paso01-html-accesibilidad-y-css/tarjeta-reserva.css.</text>
 
   <!-- Tarjeta simulada -->
   <rect x="36" y="80" width="560" height="232" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>

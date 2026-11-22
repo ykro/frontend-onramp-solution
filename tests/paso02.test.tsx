@@ -1,20 +1,32 @@
-import fs from "node:fs";
-import path from "node:path";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
+import { ListaGastos } from "../src/paso02-estado-inmutable/ListaGastos";
 
-describe("Paso 2: CSS, layout y foco visible", () => {
-  it("CA-2.1 define Grid de 2 columnas, Flexbox y foco visible en tarjeta-reserva.css", () => {
-    const cssPath = path.resolve(
-      process.cwd(),
-      "src/paso02-css-layout-y-foco/tarjeta-reserva.css"
+describe("Paso 2: Estado inmutable y claves estables", () => {
+  it("CA-2.1 actualiza la lista al agregar un gasto sin mutar el arreglo", async () => {
+    const user = userEvent.setup();
+    render(<ListaGastos />);
+
+    await user.click(
+      screen.getByRole("button", { name: /agregar café rápido/i })
     );
-    const css = fs
-      .readFileSync(cssPath, "utf-8")
-      .replace(/\/\*[\s\S]*?\*\//g, "");
 
-    expect(css).toMatch(/display:\s*grid/);
-    expect(css).toMatch(/grid-template-columns:/);
-    expect(css).toMatch(/display:\s*flex/);
-    expect(css).toMatch(/:focus-visible/);
+    expect(screen.getByText("Café rápido")).toBeInTheDocument();
+    expect(screen.getByText(/Q305\.00/)).toBeInTheDocument();
+  });
+
+  it("CA-2.2 conserva la nota de cada fila al activar el filtro", async () => {
+    const user = userEvent.setup();
+    render(<ListaGastos />);
+
+    const notaAlmuerzo = screen.getByLabelText("Nota para Almuerzo");
+    await user.type(notaAlmuerzo, "Con equipo");
+
+    await user.click(screen.getByLabelText(/solo mayores a q50/i));
+
+    expect(screen.getByLabelText("Nota para Almuerzo")).toHaveValue(
+      "Con equipo"
+    );
   });
 });

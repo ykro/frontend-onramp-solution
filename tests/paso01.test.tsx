@@ -1,9 +1,11 @@
+import fs from "node:fs";
+import path from "node:path";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
-import { TarjetaReserva } from "../src/paso01-html-y-accesibilidad/TarjetaReserva";
+import { TarjetaReserva } from "../src/paso01-html-accesibilidad-y-css/TarjetaReserva";
 
-describe("Paso 1: HTML semántico y accesibilidad", () => {
+describe("Paso 1: HTML semántico, accesibilidad y CSS", () => {
   it("CA-1.1 expone la tarjeta con roles semánticos navegables por teclado", async () => {
     const user = userEvent.setup();
     render(<TarjetaReserva />);
@@ -52,5 +54,20 @@ describe("Paso 1: HTML semántico y accesibilidad", () => {
     const alerta = screen.getByRole("alert");
     expect(alerta).toHaveAttribute("id", errorId ?? "");
     expect(alerta).toHaveTextContent(/entre 1 y 12/i);
+  });
+
+  it("CA-1.3 define Grid de 2 columnas, Flexbox y foco visible en tarjeta-reserva.css", () => {
+    const cssPath = path.resolve(
+      process.cwd(),
+      "src/paso01-html-accesibilidad-y-css/tarjeta-reserva.css"
+    );
+    const css = fs
+      .readFileSync(cssPath, "utf-8")
+      .replace(/\/\*[\s\S]*?\*\//g, "");
+
+    expect(css).toMatch(/display:\s*grid/);
+    expect(css).toMatch(/grid-template-columns:/);
+    expect(css).toMatch(/display:\s*flex/);
+    expect(css).toMatch(/:focus-visible/);
   });
 });

@@ -10,7 +10,7 @@
 
   <rect width="960" height="400" rx="12" fill="#F8F7F4"/>
 
-  <text x="36" y="36" fill="#0F172A" font-size="17" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Paso 5: Carrera de búsquedas y frontera cliente / servidor</text>
+  <text x="36" y="36" fill="#0F172A" font-size="17" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Paso 4: Carrera de búsquedas y frontera cliente / servidor</text>
 
   <!-- Bloque A: Línea de tiempo AbortController -->
   <rect x="36" y="54" width="888" height="170" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>

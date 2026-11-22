@@ -1,5 +1,5 @@
 import { type FormEvent, useState } from "react";
-import { leerPrecioSeguro } from "../paso04-tipos-y-formularios/precioSeguro";
+import { leerPrecioSeguro } from "../paso03-tipos-y-formularios/precioSeguro";
 
 export interface Gasto {
   id: string;

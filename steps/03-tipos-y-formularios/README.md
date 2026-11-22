@@ -1,4 +1,4 @@
-# Paso 4. Tipos y formularios en TypeScript
+# Paso 3. Tipos y formularios en TypeScript
 
 ![Validación de texto de input con narrowing en TypeScript](diagrams/narrowing-tipos.svg)
 
@@ -8,7 +8,7 @@ En el navegador, [`event.target.value`](https://developer.mozilla.org/en-US/docs
 
 ## Qué se construye
 
-Trabajarás en `src/paso04-tipos-y-formularios/precioSeguro.ts`:
+Trabajarás en `src/paso03-tipos-y-formularios/precioSeguro.ts`:
 
 1. Ubica la función `leerPrecioSeguro(texto: string): number | null` y elimina el atajo `Number(texto) as number`.
 2. Recorta espacios con `const limpio = texto.trim();` y devuelve `null` si `limpio === ""`.
@@ -18,8 +18,8 @@ Trabajarás en `src/paso04-tipos-y-formularios/precioSeguro.ts`:
 
 ## Criterios de aceptación
 
-- `CA-4.1` [auto] `leerPrecioSeguro` devuelve el número para entradas válidas (`"25.5"`, `" 120 "`) y `null` para cadena vacía, espacios, texto no numérico (`"abc"`), `"0"` y negativos (`"-15"`), sin usar `as number`.
+- `CA-3.1` [auto] `leerPrecioSeguro` devuelve el número para entradas válidas (`"25.5"`, `" 120 "`) y `null` para cadena vacía, espacios, texto no numérico (`"abc"`), `"0"` y negativos (`"-15"`), sin usar `as number`.
 
 ## Cómo verificar
 
-Ejecuta `npm run check:paso4` para validar los tipos y `CA-4.1` de forma independiente. También puedes probar el formulario en la pestaña **Paso 4** de `npm run dev` intentando guardar un monto vacío o negativo. Consulta el [glosario](../../docs/glosario.md) o vuelve al [README principal](../../README.md).
+Ejecuta `npm run check:paso3` para validar los tipos y `CA-3.1` de forma independiente. También puedes probar el formulario en la pestaña **Paso 3** de `npm run dev` intentando guardar un monto vacío o negativo. Consulta el [glosario](../../docs/glosario.md) o vuelve al [README principal](../../README.md).

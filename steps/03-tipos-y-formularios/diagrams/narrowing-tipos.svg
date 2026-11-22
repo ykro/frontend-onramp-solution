@@ -13,7 +13,7 @@
 
   <rect width="960" height="330" rx="12" fill="#F8F7F4"/>
 
-  <text x="36" y="38" fill="#0F172A" font-size="17" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Paso 4: Convertir texto de &lt;input&gt; con narrowing sin usar as number</text>
+  <text x="36" y="38" fill="#0F172A" font-size="17" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Paso 3: Convertir texto de &lt;input&gt; con narrowing sin usar as number</text>
   <text x="36" y="58" fill="#475569" font-size="12" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">event.target.value siempre es string. Valida en tiempo de ejecución antes de aceptar un monto.</text>
 
   <!-- Fila 1: Enfoque inseguro -->

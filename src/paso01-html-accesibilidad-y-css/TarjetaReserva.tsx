@@ -1,5 +1,5 @@
 import { type FormEvent, useState } from "react";
-import "../paso02-css-layout-y-foco/tarjeta-reserva.css";
+import "./tarjeta-reserva.css";
 
 const HORARIOS = ["09:00", "11:00", "15:00"] as const;
 
