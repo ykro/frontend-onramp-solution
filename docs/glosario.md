@@ -57,3 +57,7 @@ Familia de consultas de Testing Library ([Testing Library: `ByRole`](https://tes
 ## `"use client"`
 
 Directiva de React y Next.js ([Next.js: Server and Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components)) que se coloca en la primera línea de un archivo para marcar que ese componente corre en el navegador (porque usa `useState`, `useEffect` o eventos del usuario). Marca la frontera cliente/servidor: ningún archivo con `"use client"` debe importar módulos que guarden llaves o secretos del servidor.
+
+## CI (Integración Continua)
+
+Práctica de ejecutar automáticamente las pruebas y verificaciones de estilo en una máquina limpia cada vez que subes cambios con `git push` o abres un Pull Request, usando herramientas como [GitHub Actions](https://docs.github.com/es/actions/about-github-actions/understanding-github-actions). Revisa la guía visual en [docs/ci.md](ci.md).
