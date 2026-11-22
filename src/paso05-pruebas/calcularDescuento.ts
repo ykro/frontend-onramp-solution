@@ -1,3 +1,5 @@
+// Paso 5 (~25 min): esta función ya está bien escrita. Tu trabajo es probarla en
+// tests/paso05.test.tsx. No la edites para hacer pasar tus tests.
 export function calcularTotalConDescuento(
   precio: number,
   porcentaje: number
@@ -11,15 +13,4 @@ export function calcularTotalConDescuento(
 
   const descuento = (precio * porcentaje) / 100;
   return Number((precio - descuento).toFixed(2));
-}
-
-// Esta versión tiene un bug intencional: suma el descuento en lugar de restarlo.
-// Úsala en tu tercera prueba de tests/paso05.test.tsx para comprobar que tus pruebas
-// realmente atrapan errores y no pasan por accidente.
-export function calcularTotalConDescuentoConBug(
-  precio: number,
-  porcentaje: number
-): number {
-  const descuento = (precio * porcentaje) / 100;
-  return Number((precio + descuento).toFixed(2));
 }

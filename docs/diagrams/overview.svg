@@ -1,85 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 980 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="overview-title overview-desc">
-  <title id="overview-title">Mapa del Onramp Frontend en 5 pasos independientes</title>
-  <desc id="overview-desc">Cinco pasos independientes: Paso 1 HTML semántico, accesibilidad y CSS; Paso 2 Estado inmutable y claves; Paso 3 Tipos y formularios en TypeScript; Paso 4 Fetch, AbortController y frontera cliente/servidor; y Paso 5 Pruebas automatizadas desde cero con Vitest y Testing Library, más guías de lectura para ADR y Firebase.</desc>
-  <defs>
-    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#2563EB"/>
-    </marker>
-    <marker id="arrow-muted" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#64748B"/>
-    </marker>
-  </defs>
-
-  <rect width="980" height="420" rx="12" fill="#F8F7F4"/>
-
-  <text x="32" y="38" fill="#0F172A" font-size="18" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Onramp Frontend — 5 pasos independientes</text>
-  <text x="32" y="58" fill="#475569" font-size="12" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Puedes arrancar directo por cualquier paso y verificarlo por separado con su comando check:pasoN.</text>
-
-  <!-- Fila 1: Paso 1, Paso 2, Paso 3 -->
-  <rect x="32" y="78" width="286" height="106" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
-  <rect x="46" y="90" width="64" height="20" rx="4" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
-  <text x="78" y="104" fill="#1D4ED8" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">PASO 1</text>
-  <text x="120" y="105" fill="#0F172A" font-size="13" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">HTML, a11y y CSS</text>
-  <text x="46" y="128" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Roles ByRole, teclado, aria-describedby</text>
-  <text x="46" y="146" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Grid de 2 columnas, Flexbox y :focus-visible</text>
-  <text x="46" y="170" fill="#1D4ED8" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">npm run check:paso1 (CA-1.1 .. CA-1.3)</text>
-
-  <line x1="318" y1="131" x2="344" y2="131" stroke="#2563EB" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <rect x="348" y="78" width="286" height="106" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
-  <rect x="362" y="90" width="64" height="20" rx="4" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
-  <text x="394" y="104" fill="#1D4ED8" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">PASO 2</text>
-  <text x="436" y="105" fill="#0F172A" font-size="13" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Estado inmutable</text>
-  <text x="362" y="128" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">[...prev, nuevo] frente a .push() (Object.is)</text>
-  <text x="362" y="146" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">key={gasto.id} estable al filtrar listas</text>
-  <text x="362" y="170" fill="#1D4ED8" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">npm run check:paso2 (CA-2.1, CA-2.2)</text>
-
-  <line x1="634" y1="131" x2="660" y2="131" stroke="#2563EB" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <rect x="664" y="78" width="284" height="106" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
-  <rect x="678" y="90" width="64" height="20" rx="4" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
-  <text x="710" y="104" fill="#1D4ED8" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">PASO 3</text>
-  <text x="752" y="105" fill="#0F172A" font-size="13" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Tipos y formularios</text>
-  <text x="678" y="128" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Convertir texto de &lt;input&gt; sin as number</text>
-  <text x="678" y="146" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Narrowing en TypeScript con Number.isFinite()</text>
-  <text x="678" y="170" fill="#1D4ED8" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">npm run check:paso3 (CA-3.1)</text>
-
-  <!-- Fila 2: Paso 4, Paso 5 -->
-  <rect x="148" y="200" width="320" height="106" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
-  <rect x="162" y="212" width="64" height="20" rx="4" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
-  <text x="194" y="226" fill="#1D4ED8" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">PASO 4</text>
-  <text x="236" y="227" fill="#0F172A" font-size="13" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Fetch y frontera</text>
-  <text x="162" y="250" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Revisar response.ok y cancelar con AbortController</text>
-  <text x="162" y="268" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Separar "use client" de secreto.server.ts</text>
-  <text x="162" y="292" fill="#1D4ED8" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">npm run check:paso4 (CA-4.1 .. CA-4.3)</text>
-
-  <line x1="468" y1="253" x2="508" y2="253" stroke="#2563EB" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <rect x="512" y="200" width="320" height="106" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
-  <rect x="526" y="212" width="64" height="20" rx="4" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
-  <text x="558" y="226" fill="#1D4ED8" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">PASO 5</text>
-  <text x="600" y="227" fill="#0F172A" font-size="13" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Pruebas desde cero</text>
-  <text x="526" y="250" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Arrange -&gt; Act -&gt; Assert con Vitest</text>
-  <text x="526" y="268" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">Caso normal, bordes 0 % / 100 % y bug real</text>
-  <text x="526" y="292" fill="#1D4ED8" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">npm run check:paso5 (CA-5.1 .. CA-5.3)</text>
-
-  <!-- Guías de lectura complementarias -->
-  <text x="490" y="330" fill="#475569" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" text-anchor="middle">Guías de lectura rápida en docs/: ADR (adr-ejemplo.md), Firebase Auth y Firestore (firebase.md) y Glosario (glosario.md)</text>
-
-  <!-- Barra de verificación -->
-  <line x1="32" y1="346" x2="948" y2="346" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4,4"/>
-
-  <rect x="32" y="362" width="286" height="36" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="175" y="385" fill="#0F172A" font-size="11" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">npm run dev (interfaz interactiva)</text>
-
-  <line x1="318" y1="380" x2="344" y2="380" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrow-muted)"/>
-
-  <rect x="348" y="362" width="286" height="36" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="491" y="385" fill="#0F172A" font-size="11" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">npm run check (12 pruebas + tipos)</text>
-
-  <line x1="634" y1="380" x2="660" y2="380" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrow-muted)"/>
-
-  <rect x="664" y="362" width="284" height="36" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2"/>
-  <text x="806" y="385" fill="#166534" font-size="11" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">npm run build (listo para el curso)</text>
+<svg viewBox="0 0 980 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Frontend On-Ramp · 6 pasos</title>
+  <desc id="d">Node 24 · Vite · React 19 · TypeScript · Vitest · Testing Library · primera vez: del 0 al 5 en orden. Paso 0: Entorno y componente; Paso 1: HTML, accesibilidad y CSS; Paso 2: Estado inmutable; Paso 3: Tipos y formularios; Paso 4: Fetch y frontera; Paso 5: Tests desde cero</desc>
+  <rect width="980" height="470" fill="#fafaf7"/>
+  <g font-family="Inter, Helvetica, Arial, sans-serif">
+    <text x="30" y="52" font-size="26" font-weight="700" fill="#1c1917">Frontend On-Ramp · 6 pasos</text>
+    <text x="30" y="82" font-size="15" fill="#57534e">Node 24 · Vite · React 19 · TypeScript · Vitest · Testing Library · primera vez: del 0 al 5 en orden</text>
+    <rect x="30" y="110" width="296" height="130" rx="12" fill="#ffffff" stroke="#d6d3d1"/>
+    <rect x="30" y="110" width="6" height="130" rx="3" fill="#b45309"/>
+    <text x="52" y="142" font-size="13" font-weight="700" fill="#b45309">PASO 0 · 25 MIN</text>
+    <text x="52" y="172" font-size="19" font-weight="700" fill="#1c1917">Entorno y componente</text>
+    <text x="52" y="200" font-size="14" fill="#44403c">Node, Vite, props, useState y map</text>
+    <text x="52" y="220" font-size="14" fill="#44403c">src/paso00-hola/Saludo.tsx</text>
+    <rect x="348" y="110" width="296" height="130" rx="12" fill="#ffffff" stroke="#d6d3d1"/>
+    <rect x="348" y="110" width="6" height="130" rx="3" fill="#1d4ed8"/>
+    <text x="370" y="142" font-size="13" font-weight="700" fill="#1d4ed8">PASO 1 · 35 MIN</text>
+    <text x="370" y="172" font-size="19" font-weight="700" fill="#1c1917">HTML, accesibilidad y CSS</text>
+    <text x="370" y="200" font-size="14" fill="#44403c">roles, nombres, ARIA, Grid y Flexbox</text>
+    <text x="370" y="220" font-size="14" fill="#44403c">TarjetaReserva.tsx</text>
+    <rect x="666" y="110" width="296" height="130" rx="12" fill="#ffffff" stroke="#d6d3d1"/>
+    <rect x="666" y="110" width="6" height="130" rx="3" fill="#1d4ed8"/>
+    <text x="688" y="142" font-size="13" font-weight="700" fill="#1d4ed8">PASO 2 · 20 MIN</text>
+    <text x="688" y="172" font-size="19" font-weight="700" fill="#1c1917">Estado inmutable</text>
+    <text x="688" y="200" font-size="14" fill="#44403c">Object.is y key estable al filtrar</text>
+    <text x="688" y="220" font-size="14" fill="#44403c">ListaGastos.tsx</text>
+    <rect x="30" y="262" width="296" height="130" rx="12" fill="#ffffff" stroke="#d6d3d1"/>
+    <rect x="30" y="262" width="6" height="130" rx="3" fill="#1d4ed8"/>
+    <text x="52" y="294" font-size="13" font-weight="700" fill="#1d4ed8">PASO 3 · 15 MIN</text>
+    <text x="52" y="324" font-size="19" font-weight="700" fill="#1c1917">Tipos y formularios</text>
+    <text x="52" y="352" font-size="14" fill="#44403c">texto del input a número sin as</text>
+    <text x="52" y="372" font-size="14" fill="#44403c">precioSeguro.ts</text>
+    <rect x="348" y="262" width="296" height="130" rx="12" fill="#ffffff" stroke="#d6d3d1"/>
+    <rect x="348" y="262" width="6" height="130" rx="3" fill="#1d4ed8"/>
+    <text x="370" y="294" font-size="13" font-weight="700" fill="#1d4ed8">PASO 4 · 30 MIN</text>
+    <text x="370" y="324" font-size="19" font-weight="700" fill="#1c1917">Fetch y frontera</text>
+    <text x="370" y="352" font-size="14" fill="#44403c">response.ok, AbortController y secretos</text>
+    <text x="370" y="372" font-size="14" fill="#44403c">BuscadorRapido.tsx</text>
+    <rect x="666" y="262" width="296" height="130" rx="12" fill="#ffffff" stroke="#d6d3d1"/>
+    <rect x="666" y="262" width="6" height="130" rx="3" fill="#1d4ed8"/>
+    <text x="688" y="294" font-size="13" font-weight="700" fill="#1d4ed8">PASO 5 · 25 MIN</text>
+    <text x="688" y="324" font-size="19" font-weight="700" fill="#1c1917">Tests desde cero</text>
+    <text x="688" y="352" font-size="14" fill="#44403c">rojo ante una versión con un bug</text>
+    <text x="688" y="372" font-size="14" fill="#44403c">tests/paso05.test.tsx</text>
+    <text x="30" y="444" font-size="15" fill="#44403c">Ver cada paso: npm run dev   ·   Verificar: npm run check:pasoN   ·   Compilar: npm run build</text>
+  </g>
 </svg>

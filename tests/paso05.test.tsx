@@ -1,11 +1,10 @@
+// Paso 5: tests de calcularTotalConDescuento con Arrange, Act y Assert.
+// `npm run check:paso5` los corre contra la función correcta y contra dos versiones con un bug.
 import { describe, expect, it } from "vitest";
-import {
-  calcularTotalConDescuento,
-  calcularTotalConDescuentoConBug,
-} from "../src/paso05-pruebas/calcularDescuento";
+import { calcularTotalConDescuento } from "../src/paso05-pruebas/calcularDescuento";
 
-describe("Paso 5: Pruebas automatizadas desde cero con Vitest", () => {
-  it("CA-5.1 calcula correctamente un caso normal (por ejemplo, Q200 con 15 % de descuento)", () => {
+describe("calcularTotalConDescuento", () => {
+  it("aplica el descuento en un caso normal", () => {
     // Arrange
     const precio = 200;
     const porcentaje = 15;
@@ -13,31 +12,18 @@ describe("Paso 5: Pruebas automatizadas desde cero con Vitest", () => {
     // Act
     const total = calcularTotalConDescuento(precio, porcentaje);
 
-    // Assert
+    // Assert: 15 % de 200 son 30, así que el total baja a 170.
     expect(total).toBe(170);
   });
 
-  it("CA-5.2 maneja los casos borde de 0 % y 100 % de descuento", () => {
-    // Arrange y Act
-    const sinDescuento = calcularTotalConDescuento(120, 0);
-    const descuentoTotal = calcularTotalConDescuento(120, 100);
-
-    // Assert
-    expect(sinDescuento).toBe(120);
-    expect(descuentoTotal).toBe(0);
+  it("respeta los casos borde de 0 % y 100 %", () => {
+    expect(calcularTotalConDescuento(120, 0)).toBe(120);
+    expect(calcularTotalConDescuento(120, 100)).toBe(0);
   });
 
-  it("CA-5.3 atrapa el bug de calcularTotalConDescuentoConBug", () => {
-    // Arrange
-    const precio = 200;
-    const porcentaje = 15;
-    const esperado = calcularTotalConDescuento(precio, porcentaje);
-
-    // Act
-    const resultadoConBug = calcularTotalConDescuentoConBug(precio, porcentaje);
-
-    // Assert: la versión con bug suma el descuento en vez de restarlo
-    expect(resultadoConBug).not.toBe(esperado);
-    expect(resultadoConBug).toBe(230);
+  it("rechaza datos fuera de rango", () => {
+    expect(() => calcularTotalConDescuento(-1, 10)).toThrow(RangeError);
+    expect(() => calcularTotalConDescuento(100, 101)).toThrow(RangeError);
+    expect(() => calcularTotalConDescuento(100, -5)).toThrow(RangeError);
   });
 });

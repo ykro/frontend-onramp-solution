@@ -1,44 +1,48 @@
 import { useState } from "react";
+import { Saludo } from "../paso00-hola/Saludo";
 import { TarjetaReserva } from "../paso01-html-accesibilidad-y-css/TarjetaReserva";
 import { ListaGastos } from "../paso02-estado-inmutable/ListaGastos";
 import { BuscadorRapido } from "../paso04-fetch-y-frontera/BuscadorRapido";
-import {
-  calcularTotalConDescuento,
-  calcularTotalConDescuentoConBug,
-} from "../paso05-pruebas/calcularDescuento";
+import { calcularTotalConDescuento } from "../paso05-pruebas/calcularDescuento";
+import { sumaElDescuento } from "../paso05-pruebas/versionesConBug";
 
-type PasoId = "paso01" | "paso02" | "paso03" | "paso04" | "paso05";
+type PasoId = "paso00" | "paso01" | "paso02" | "paso03" | "paso04" | "paso05";
 
 const TABS: { id: PasoId; titulo: string; resumen: string }[] = [
+  {
+    id: "paso00",
+    titulo: "Paso 0: Primer componente",
+    resumen: "Un componente con props, estado con useState y una lista con map.",
+  },
   {
     id: "paso01",
     titulo: "Paso 1: HTML, accesibilidad y CSS",
     resumen:
-      "HTML semántico, teclado, roles ByRole, aria-invalid, aria-describedby, CSS Grid de 2 columnas, Flexbox y :focus-visible.",
+      "HTML semántico, teclado, roles y nombres accesibles, mensajes de error conectados al campo, Grid, Flexbox y foco visible.",
   },
   {
     id: "paso02",
     titulo: "Paso 2: Estado inmutable",
     resumen:
-      "Actualización inmutable de arreglos con [...prev, nuevo] (Object.is) y key estable por id al filtrar.",
+      "Por qué React no ve un arreglo mutado y por qué las notas saltan de fila al filtrar.",
   },
   {
     id: "paso03",
     titulo: "Paso 3: Tipos y formularios",
     resumen:
-      "Validación y estrechamiento de tipos (narrowing) en TypeScript para convertir texto de inputs sin usar as number.",
+      "El texto de un input se convierte en número solo después de validarlo, sin aserciones de tipo.",
   },
   {
     id: "paso04",
     titulo: "Paso 4: Fetch y frontera",
     resumen:
-      "Verificación de response.ok, cancelación con AbortController y separación entre \"use client\" y secreto.server.ts.",
+      "Errores HTTP que fetch no lanza, búsquedas viejas que pisan a las nuevas y secretos que no deben llegar al navegador.",
   },
   {
     id: "paso05",
     titulo: "Paso 5: Pruebas desde cero",
     resumen:
-      "Pruebas automatizadas con Vitest y Testing Library: ciclo Arrange -> Act -> Assert, casos borde y detección de bugs.",
+      "Tests con Vitest que pasan con la función correcta y se ponen en rojo con una versión con un bug.",
   },
 ];
 
@@ -77,16 +81,16 @@ function VistaPruebasDescuento() {
   const [porcentaje, setPorcentaje] = useState(15);
 
   const sano = calcularTotalConDescuento(precio, porcentaje);
-  const conBug = calcularTotalConDescuentoConBug(precio, porcentaje);
+  const conBug = sumaElDescuento(precio, porcentaje);
 
   return (
     <section aria-labelledby="titulo-pruebas">
       <h2 id="titulo-pruebas" style={{ marginTop: 0 }}>
-        Comparación: función sana frente a función con bug
+        Función correcta frente a una versión con un bug
       </h2>
       <p style={{ marginTop: 0, color: "#57534e" }}>
         Cambia el precio y el descuento para ver la diferencia. Luego escribe tus
-        tres pruebas en <code>tests/paso05.test.tsx</code> y corre{" "}
+        tests en <code>tests/paso05.test.tsx</code> y corre{" "}
         <code>npm run check:paso5</code>.
       </p>
       <div
@@ -144,7 +148,7 @@ function VistaPruebasDescuento() {
             background: "#f0fdf4",
           }}
         >
-          <strong>calcularTotalConDescuento (sana)</strong>
+          <strong>calcularTotalConDescuento (correcta)</strong>
           <p style={{ margin: "6px 0 0", fontSize: "1.15rem", color: "#15803d" }}>
             Q{sano.toFixed(2)}
           </p>
@@ -157,7 +161,7 @@ function VistaPruebasDescuento() {
             background: "#fef2f2",
           }}
         >
-          <strong>calcularTotalConDescuentoConBug</strong>
+          <strong>Versión con un bug (suma el descuento)</strong>
           <p style={{ margin: "6px 0 0", fontSize: "1.15rem", color: "#b91c1c" }}>
             Q{conBug.toFixed(2)}
           </p>
@@ -168,16 +172,16 @@ function VistaPruebasDescuento() {
 }
 
 export function App() {
-  const [activo, setActivo] = useState<PasoId>("paso01");
+  const [activo, setActivo] = useState<PasoId>("paso00");
   const actual = TABS.find((tab) => tab.id === activo) ?? TABS[0];
 
   return (
     <div className="shell">
       <header className="shell-header">
-        <h1>Onramp Frontend</h1>
+        <h1>Frontend On-Ramp</h1>
         <p>
-          Cinco pasos independientes para dominar HTML, CSS, React, TypeScript,
-          Next.js y pruebas automatizadas.
+          Seis pasos cortos de HTML, CSS, React, TypeScript, fetch y tests antes
+          del curso. Si es tu primera vez, síguelos en orden.
         </p>
       </header>
 
@@ -201,6 +205,9 @@ export function App() {
 
       <main className="panel" role="tabpanel">
         {actual ? <p className="panel-resumen">{actual.resumen}</p> : null}
+        {activo === "paso00" ? (
+          <Saludo nombre="Ana" temas={["HTML y CSS", "React", "TypeScript"]} />
+        ) : null}
         {activo === "paso01" ? <TarjetaReserva /> : null}
         {activo === "paso02" || activo === "paso03" ? <ListaGastos /> : null}
         {activo === "paso04" ? <BuscadorRapido buscar={buscarSimulado} /> : null}
