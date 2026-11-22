@@ -78,9 +78,3 @@
   font-weight: 500;
   font-size: 0.95rem;
 }
-
-@media (max-width: 600px) {
-  .reserva-grid {
-    grid-template-columns: 1fr;
-  }
-}

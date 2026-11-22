@@ -5,7 +5,7 @@ import { ListaGastos } from "../paso02-estado-inmutable/ListaGastos";
 import { leerPrecioSeguro } from "../paso03-tipos-y-formularios/precioSeguro";
 import { BuscadorRapido } from "../paso04-fetch-y-frontera/BuscadorRapido";
 import { calcularTotalConDescuento } from "../paso05-pruebas/calcularDescuento";
-import { sumaElDescuento } from "../paso05-pruebas/versionesConBug";
+import { versionA } from "../paso05-pruebas/versiones";
 
 type PasoId = "paso00" | "paso01" | "paso02" | "paso03" | "paso04" | "paso05";
 
@@ -98,7 +98,7 @@ function VistaPruebasDescuento() {
   const [porcentaje, setPorcentaje] = useState(15);
 
   const sano = calcularTotalConDescuento(precio, porcentaje);
-  const conBug = sumaElDescuento(precio, porcentaje);
+  const totalA = versionA(precio, porcentaje);
 
   return (
     <section aria-labelledby="titulo-pruebas">
@@ -178,9 +178,9 @@ function VistaPruebasDescuento() {
             background: "#fef2f2",
           }}
         >
-          <strong>Versión con un bug (suma el descuento)</strong>
+          <strong>Versión A</strong>
           <p style={{ margin: "6px 0 0", fontSize: "1.15rem", color: "#b91c1c" }}>
-            Q{conBug.toFixed(2)}
+            Q{totalA.toFixed(2)}
           </p>
         </div>
       </div>

@@ -16,17 +16,17 @@ Todo el curso de frontend usa [React](https://react.dev/learn), y React se apoya
 
 - **Terminal.** Es la ventana donde escribes comandos: Terminal en macOS y Linux, PowerShell en Windows. `cd carpeta` entra a una carpeta, `ls` (o `dir` en Windows) muestra lo que hay adentro y `Ctrl+C` detiene el programa que esté corriendo, como el servidor de Vite. Para bajar este repositorio escribe `git clone https://github.com/ykro/frontend-onramp.git` y después `cd frontend-onramp`. Si no tienes `git`, instálalo desde [git-scm.com](https://git-scm.com/downloads).
 - **HTML y DOM.** El navegador lee el HTML y arma un árbol de objetos, el DOM, donde cada etiqueta es un nodo con hijos. Lo que ves en pantalla es ese árbol, no el archivo HTML. React no escribe HTML a mano; calcula cómo debería quedar el árbol y cambia solo los nodos que hacen falta.
-- **Eventos.** Un clic, una tecla o el envío de un formulario producen un evento. En JSX conectas una función a un evento con atributos como `onClick={sumar}` u `onChange={...}`. Pasas la función sin paréntesis; si escribes `onClick={sumar()}`, la ejecutas al dibujar en lugar de esperar el clic.
+- **Eventos.** `onClick={sumar}` conecta una función al clic; va sin paréntesis, porque `sumar()` la ejecutaría al dibujar.
 - **JSX.** Es la sintaxis parecida a HTML que escribes dentro de un archivo `.tsx`. Lo que va entre llaves, como `{nombre}`, es JavaScript. Dos diferencias con HTML que vas a ver mucho son `className` en lugar de `class` y `htmlFor` en lugar de `for`.
 - **Componente.** Una función con nombre en mayúscula que devuelve JSX, por ejemplo `function Saludo() { return <h2>Hola</h2>; }`. Se usa como si fuera una etiqueta, `<Saludo />`.
 - **Props.** Los atributos que le pasas a un componente, `<Saludo nombre="Ana" />`, llegan como un objeto en el primer parámetro de la función.
 - **Estado con `useState`.** `const [valor, setValor] = useState(0)` te da el valor actual y una función para cambiarlo. Llamar a `setValor` le avisa a React que vuelva a dibujar el componente. Cambiar una variable normal no le avisa nada.
-- **JavaScript moderno que aparece en todo el on-ramp.** `const` y `let`, funciones flecha (`(x) => x + 1`), template strings (`` `Hola, ${nombre}` ``), desestructuración (`const { nombre } = props`) y `arreglo.map(...)` para convertir una lista de datos en una lista de elementos.
+- **JavaScript moderno.** Funciones flecha, template strings, desestructuración y `map`; la plantilla los usa.
 
 ## Qué vas a hacer
 
 - **Preparar.** Instala [Node.js](https://nodejs.org/en/download) en la versión que indica `.nvmrc` (24). Si usas [nvm](https://github.com/nvm-sh/nvm), basta con `nvm install` y `nvm use` en la raíz del repo. Luego corre `npm install`.
-- **Leer.** Corre `npm run dev`, abre la URL que imprime Vite (normalmente `http://localhost:5173`) y entra a la pestaña **Paso 0**. Después abre [Saludo.tsx](../../src/paso00-hola/Saludo.tsx) y ubica qué parte del JSX dibuja cada cosa que ves.
+- **Leer.** Corre `npm run dev`, abre la URL que imprime Vite (normalmente `http://localhost:5173`) y entra a la pestaña **Paso 0**. Después abre [Saludo.tsx](../../src/paso00-hola/Saludo.tsx) en tu editor (VS Code sirve) y ubica qué parte del JSX dibuja cada cosa que ves.
 - **Debuguear.** Haz clic varias veces en **Sumar uno** con la consola del navegador abierta (clic derecho, **Inspeccionar**, pestaña **Console**). El `console.log` muestra que la variable sí cambia. Lee los tres `TODO` del archivo.
 - **Escribir.** Corrige los tres comportamientos. Vite recarga la página cada vez que guardas, así que puedes ver el efecto de cada cambio al instante.
 

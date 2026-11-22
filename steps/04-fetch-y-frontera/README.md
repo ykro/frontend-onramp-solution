@@ -27,10 +27,10 @@ Cuando el frontend habla con un API aparecen tres fallos que llegan a producció
   ```
 
   Cambia la URL por `/todos/999999` y mira qué pasa con `status` y `ok`. La promesa no se rechazó, aunque el servidor respondió `404`.
-- **`.then` y `.catch`.** Son otra forma de escribir lo mismo sin `await`. `promesa.then(valor => ...)` corre cuando se resuelve y `.catch(error => ...)` cuando se rechaza. En este paso verás las dos formas.
 - **`useEffect`.** Ejecuta código después de dibujar, por ejemplo una búsqueda. Corre de nuevo cuando cambia algo de su lista de dependencias, y la función que devuelves (la limpieza) corre antes de la siguiente ejecución y cuando el componente desaparece.
+- **Inyección de dependencias.** `BuscadorRapido` no importa la función que busca; la recibe como prop (`buscar`). Por eso el test le pasa una búsqueda falsa que responde en 120 ms o en 15 ms sin tocar la red. Es la misma idea que recibir un objeto en el constructor en Java. En la Unidad 2 del curso, Firebase y el API entran igual, detrás de una interfaz, y los tests usan versiones falsas en memoria.
 - **Cliente y servidor.** El código de cliente corre en el navegador de cada persona y cualquiera puede leerlo con las herramientas del navegador. El código de servidor corre en una máquina tuya y ahí sí pueden vivir llaves y secretos.
-- **`"use client"` en este repo.** Este on-ramp usa Vite, que trata todo como código de cliente e ignora la directiva. La agregas aquí para practicar la convención de Next.js que usarás en el curso, donde sí decide qué corre en el navegador. El test solo revisa que esté en la primera línea y que el componente no importe el módulo con el secreto.
+- **`"use client"` en este repo.** Vite ignora la directiva. La agregas para practicar la convención de Next.js que usarás en el curso.
 
 ## Qué vas a hacer
 

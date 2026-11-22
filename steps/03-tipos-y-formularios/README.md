@@ -2,7 +2,7 @@
 
 ![Paso 3. Tipos y formularios en TypeScript](diagrams/narrowing-tipos.svg)
 
-Este paso toma unos 20 minutos.
+Este paso toma unos 35 minutos.
 
 ## Antes de empezar
 
@@ -14,15 +14,24 @@ Este paso toma unos 20 minutos.
 
 Todo lo que escribe una persona en un `<input>` llega como texto, aunque el campo sea numérico ([`HTMLInputElement.value`](https://developer.mozilla.org/es/docs/Web/API/HTMLInputElement)). Una [aserción con `as number`](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions) solo calla al compilador; cuando el programa corre, el dato sigue siendo lo que era. TypeScript desaparece al compilar, así que la validación real tiene que ser código que se ejecuta. Si revisas el dato con un `if`, TypeScript entiende qué tipo queda después de esa revisión; eso se llama [narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html). En el curso, cada formulario que manda datos al API pasa por una función así.
 
+## Lo mínimo que necesitas saber
+
+- **Uniones de tipos.** `number | null` significa «un número o nada». TypeScript te obliga a revisar el `null` antes de usar el valor como número.
+- **Narrowing.** Después de `if (typeof x === "number")` o de `if (resultado === null) return`, TypeScript sabe qué tipo queda en las líneas siguientes. La revisión corre de verdad, a diferencia de `as`.
+- **Zod.** En el curso no escribirás esos `if` a mano. Un esquema de [Zod](https://zod.dev) declara las reglas (`z.coerce.number().positive()`) y `safeParse` devuelve el dato con su tipo o la lista de errores, sin lanzar. Una regla que compara dos campos va en `superRefine`. En la U1, React Hook Form usa ese mismo esquema para todo el formulario.
+
 ## Qué vas a hacer
 
 - **Leer.** Abre [precioSeguro.ts](../../src/paso03-tipos-y-formularios/precioSeguro.ts). En la pestaña **Paso 3** de `npm run dev`, escribe un monto vacío, `abc`, `-15` y ` 12 ` y anota qué devuelve hoy `leerPrecioSeguro` en cada caso. Antes de cada prueba, predice el resultado.
 - **Debuguear.** Corre `npm run check:paso3`. Cada línea del test es un caso; fíjate cuál falla primero y qué devolvió la función.
 - **Escribir.** Reemplaza el atajo por una validación que cumpla todos los casos del `TODO`, sin usar `as`.
+- **Declarar.** En [filtroPrecio.ts](../../src/paso03-tipos-y-formularios/filtroPrecio.ts), agrega al esquema las dos reglas del `TODO`. No toques `validarFiltro`; léela para ver qué devuelve `safeParse`.
 
 ## Criterios de aceptación
 
 - `CA-3.1` `leerPrecioSeguro` devuelve el número para `"25.5"` y `" 120 "`, y `null` para texto vacío, solo espacios, `"abc"`, `"0"` y `"-15"`, sin usar `as number`.
+- `CA-3.2` `FiltroPrecio` convierte `"50"` en `50` y rechaza un monto vacío o negativo, con el error en el campo correcto.
+- `CA-3.3` Si `maximo` es menor que `minimo`, el único error queda en `maximo` con el mensaje del `TODO`.
 
 ## Al terminar
 

@@ -7,7 +7,7 @@ import { calcularTotalConDescuento } from "../src/paso05-pruebas/calcularDescuen
 import { ResumenDescuento } from "../src/paso05-pruebas/ResumenDescuento";
 
 describe("calcularTotalConDescuento", () => {
-  it("aplica el descuento en un caso normal", () => {
+  it("caso normal", () => {
     // Arrange
     const precio = 200;
     const porcentaje = 15;
@@ -19,18 +19,18 @@ describe("calcularTotalConDescuento", () => {
     expect(total).toBe(170);
   });
 
-  it("respeta los edge cases de 0 % y 100 %", () => {
+  it("un edge case que elijas: 0 % y 100 %", () => {
     expect(calcularTotalConDescuento(120, 0)).toBe(120);
     expect(calcularTotalConDescuento(120, 100)).toBe(0);
   });
 
-  it("rechaza datos fuera de rango", () => {
+  it("un caso que atrape la otra versión: datos fuera de rango", () => {
     expect(() => calcularTotalConDescuento(-1, 10)).toThrow(RangeError);
     expect(() => calcularTotalConDescuento(100, 101)).toThrow(RangeError);
     expect(() => calcularTotalConDescuento(100, -5)).toThrow(RangeError);
   });
 
-  it("muestra el total en ResumenDescuento", async () => {
+  it("componente: muestra el total en ResumenDescuento", async () => {
     // Arrange
     const user = userEvent.setup();
     render(<ResumenDescuento precio={200} />);

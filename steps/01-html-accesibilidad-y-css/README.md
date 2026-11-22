@@ -21,19 +21,18 @@ Un formulario armado con `<div>` y `<span>` se ve bien con mouse, pero no funcio
 - **ARIA.** Son atributos que agregan información cuando el HTML no alcanza. Aquí usas tres. `aria-invalid` marca un campo con error, `aria-describedby` apunta al `id` del texto que explica el error y `role="alert"` o `role="status"` hacen que el lector de pantalla anuncie un mensaje que aparece de repente. La primera regla de ARIA es usar HTML nativo siempre que exista.
 - **CSS básico.** Un selector elige elementos (`.reserva-grid` elige los que tienen esa clase) y las declaraciones dentro de llaves cambian cómo se ven. Una pseudoclase como `:hover` o `:focus-visible` aplica estilos solo en cierto estado.
 - **Grid y Flexbox.** Grid acomoda en filas y columnas a la vez, útil para un formulario de dos columnas. Flexbox acomoda en una sola dirección, útil para una fila con un botón y un mensaje.
-- **Media query.** `@media (max-width: 600px) { ... }` aplica las reglas de adentro solo cuando la ventana mide 600 px o menos. Así el mismo formulario pasa de dos columnas a una en un celular. El test no revisa este punto; compruébalo achicando la ventana.
 
 ## Qué vas a hacer
 
 - **Leer.** Abre la pestaña **Paso 1** con `npm run dev` e intenta reservar usando solo `Tab`, flechas y `Enter`. Anota en qué punto ya no puedes avanzar. Luego abre [TarjetaReserva.tsx](../../src/paso01-html-accesibilidad-y-css/TarjetaReserva.tsx) y [tarjeta-reserva.css](../../src/paso01-html-accesibilidad-y-css/tarjeta-reserva.css).
 - **Debuguear.** Corre `npm run check:paso1` y lee el primer error. Testing Library imprime los roles que sí encontró; compáralos con los que busca el test. Después lee los `TODO` de los dos archivos.
-- **Escribir.** Cambia los `<div>` y `<span>` por las etiquetas que correspondan, agrega la validación accesible de la cantidad y completa el CSS. Comprueba otra vez con teclado y achica la ventana para ver el cambio de dos columnas a una.
+- **Escribir.** Cambia los `<div>` y `<span>` por las etiquetas que correspondan, agrega la validación accesible de la cantidad y completa el CSS. Comprueba otra vez con teclado.
 
 ## Criterios de aceptación
 
 - `CA-1.1` La tarjeta expone una región llamada **Reservar sala de estudio**, un campo numérico **Cantidad de personas**, un selector **Horario** y un botón **Confirmar reserva**. Al confirmar, un mensaje con rol `status` menciona la cantidad y el horario.
 - `CA-1.2` Con una cantidad fuera de 1 a 12, el campo queda marcado como inválido y conectado a un mensaje con rol `alert` que dice `entre 1 y 12`.
-- `CA-1.3` `tarjeta-reserva.css` usa Grid con columnas definidas, Flexbox y un estilo en `:focus-visible`.
+- `CA-1.3` `tarjeta-reserva.css` usa Grid con columnas definidas en `.reserva-grid`, Flexbox en `.reserva-acciones` y un estilo en `.reserva-boton:focus-visible`.
 
 ## Al terminar
 
@@ -47,6 +46,8 @@ Un formulario armado con `<div>` y `<span>` se ve bien con mouse, pero no funcio
 ```bash
 npm run check:paso1
 ```
+
+Para la U1 basta con que pasen `CA-1.1` y `CA-1.2`; `CA-1.3` queda en rojo hasta que hagas el CSS.
 
 Si te trabas, abre la [pista 1](hints/1.md). Cada pista da un poco más que la anterior; la pista 3 trae un esqueleto, nunca la respuesta completa.
 

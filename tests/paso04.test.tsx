@@ -25,21 +25,11 @@ describe("Paso 4: Fetch, cancelación y frontera cliente/servidor", () => {
       signalsPorTermino.set(termino, signal);
       const demora = termino === "a" ? 120 : 15;
 
-      return new Promise<string[]>((resolve, reject) => {
-        const timer = setTimeout(() => {
-          if (signal.aborted) {
-            reject(new DOMException("Cancelada", "AbortError"));
-            return;
-          }
-          resolve(
-            termino === "a" ? ["Resultado viejo"] : ["Resultado nuevo"]
-          );
+      // La respuesta vieja llega aunque la señal esté abortada, como con un servidor lento.
+      return new Promise<string[]>((resolve) => {
+        setTimeout(() => {
+          resolve(termino === "a" ? ["Resultado viejo"] : ["Resultado nuevo"]);
         }, demora);
-
-        signal.addEventListener("abort", () => {
-          clearTimeout(timer);
-          reject(new DOMException("Cancelada", "AbortError"));
-        });
       });
     };
 

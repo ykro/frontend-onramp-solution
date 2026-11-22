@@ -4,9 +4,9 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 // `npm run check:paso5` define PASO5_VERSION para correr los tests del estudiante contra
-// una versión con un bug de calcularTotalConDescuento (ver src/paso05-pruebas/versionesConBug.ts).
+// una versión con un bug de calcularTotalConDescuento (ver src/paso05-pruebas/versiones.ts).
 // El alias también cubre el import de ResumenDescuento, así que el componente recibe la misma versión.
-const versionConBug = process.env.PASO5_VERSION;
+const versionElegida = process.env.PASO5_VERSION;
 
 export default defineConfig({
   plugins: [react()],
@@ -15,12 +15,12 @@ export default defineConfig({
     globals: true,
     setupFiles: "./tests/setup.ts",
     css: true,
-    alias: versionConBug
+    alias: versionElegida
       ? [
           {
             find: /^(.*\/paso05-pruebas|\.)\/calcularDescuento(\.(ts|js))?$/,
             replacement: fileURLToPath(
-              new URL("./src/paso05-pruebas/versionesConBug.ts", import.meta.url)
+              new URL("./src/paso05-pruebas/versiones.ts", import.meta.url)
             ),
           },
         ]

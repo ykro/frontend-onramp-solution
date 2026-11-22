@@ -11,8 +11,8 @@ import path from "node:path";
 
 const ARCHIVO = "tests/paso05.test.tsx";
 const VERSIONES = {
-  sumaElDescuento: "suma el descuento en lugar de restarlo",
-  noValidaRangos: "acepta precios negativos y porcentajes fuera de 0 a 100",
+  versionA: { etiqueta: "CA-5.2", nombre: "la versión A" },
+  versionB: { etiqueta: "CA-5.3", nombre: "la versión B" },
 };
 const carpeta = mkdtempSync(path.join(tmpdir(), "paso5-"));
 const require = createRequire(import.meta.url);
@@ -91,14 +91,13 @@ if (!correcta.reporte || correcta.codigo !== 0 || fallaron > 0) {
 }
 
 if (ok) {
-  for (const [version, descripcion] of Object.entries(VERSIONES)) {
+  for (const [version, { etiqueta, nombre }] of Object.entries(VERSIONES)) {
     const r = correr(version, version);
     const fallidos = r.reporte?.numFailedTests ?? 0;
-    const etiqueta = version === "sumaElDescuento" ? "CA-5.2" : "CA-5.3";
     if (fallidos > 0) {
-      console.log(`✓ ${etiqueta} ${fallidos} test(s) se ponen en rojo con la versión que ${descripcion}.`);
+      console.log(`✓ ${etiqueta} ${fallidos} test(s) se ponen en rojo con ${nombre}.`);
     } else {
-      console.error(`✗ ${etiqueta} Todos tus tests pasan con una versión que ${descripcion}. Agrega un test que la atrape.`);
+      console.error(`✗ ${etiqueta} Todos tus tests pasan con ${nombre}. Agrega un test que la atrape.`);
       ok = false;
     }
   }

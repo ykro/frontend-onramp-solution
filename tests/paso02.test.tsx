@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
@@ -28,5 +30,11 @@ describe("Paso 2: Estado inmutable y claves estables", () => {
     expect(screen.getByLabelText("Nota para Almuerzo")).toHaveValue(
       "Con equipo"
     );
+    expect(screen.getByText(/Total visible: Q255\.00/)).toBeInTheDocument();
+    const codigo = fs.readFileSync(
+      path.resolve(process.cwd(), "src/paso02-estado-inmutable/ListaGastos.tsx"),
+      "utf-8"
+    );
+    expect(codigo, "Calcula el total en cada render, sin useState ni useEffect").not.toMatch(/\bsetTotal\b/);
   });
 });
