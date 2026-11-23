@@ -77,9 +77,16 @@ describe("Paso 1: HTML semántico, accesibilidad y CSS", () => {
         .map((m) => m[2])
         .join(";");
 
-    expect(reglas(".reserva-grid")).toMatch(/display:\s*grid/);
-    expect(reglas(".reserva-grid")).toMatch(/grid-template-columns:/);
+    const grid = reglas(".reserva-grid");
+    expect(grid).toMatch(/display:\s*grid/);
+    const columnas = grid.match(/grid-template-columns:\s*([^;]+)/)?.[1]?.trim() ?? "";
+    const tieneDosColumnas =
+      /repeat\(\s*[2-9]\d*\s*,/.test(columnas) ||
+      columnas.replace(/\([^)]*\)/g, "()").split(/\s+/).filter(Boolean).length >= 2;
+    expect(tieneDosColumnas).toBe(true);
     expect(reglas(".reserva-acciones")).toMatch(/display:\s*flex/);
-    expect(reglas(".reserva-boton:focus-visible")).toMatch(/[\w-]+\s*:/);
+    const foco = reglas(".reserva-boton:focus-visible");
+    expect(foco).toMatch(/[\w-]+\s*:/);
+    expect(foco).not.toMatch(/outline:\s*(none|0)\b/i);
   });
 });

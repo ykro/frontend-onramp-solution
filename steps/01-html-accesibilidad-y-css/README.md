@@ -17,10 +17,15 @@ Un formulario armado con `<div>` y `<span>` se ve bien con mouse, pero no funcio
 ## Lo mínimo que necesitas saber
 
 - **HTML semántico.** Cada etiqueta dice qué es su contenido. `<section>` agrupa un tema, `<h2>` es un título, `<form>` agrupa campos que se envían juntos, `<label>` nombra un campo y `<button>` es algo que se presiona. El navegador les da teclado, foco y un rol accesible sin que escribas nada extra. Un `<div>` no significa nada. Ver [HTML semántico en MDN](https://developer.mozilla.org/es/docs/Glossary/Semantics#semántica_en_html).
-- **Rol y nombre accesible.** Cada control tiene un rol (`button`, `combobox`, `spinbutton`, `region`) y un nombre, que casi siempre sale del texto del botón o del `<label>` conectado al campo.
+- **Rol y nombre accesible.** Cada control tiene un rol y un nombre, que casi siempre sale del texto del botón o del `<label>` conectado al campo. Equivalencias que usarás aquí:
+  - `<section aria-labelledby="...">` -> rol `region`
+  - `<input type="number">` -> rol `spinbutton`
+  - `<select>` -> rol `combobox`
+  - `<button type="submit">` -> rol `button` (usa la clase `.reserva-boton` para el estilo de foco visible)
+- **Validación en `<form>` con `noValidate`.** Cuando un `<input type="number">` tiene `min` y `max`, el navegador bloquea el envío ante valores fuera de rango antes de llamar a `onSubmit`. Agregar `noValidate` en `<form onSubmit={...} noValidate>` junto con `evento.preventDefault()` deja que tu propia validación corra y marque `aria-invalid` y `role="alert"`.
 - **ARIA.** Son atributos que agregan información cuando el HTML no alcanza. Aquí usas tres. `aria-invalid` marca un campo con error, `aria-describedby` apunta al `id` del texto que explica el error y `role="alert"` o `role="status"` hacen que el lector de pantalla anuncie un mensaje que aparece de repente. La primera regla de ARIA es usar HTML nativo siempre que exista.
-- **CSS básico.** Un selector elige elementos (`.reserva-grid` elige los que tienen esa clase) y las declaraciones dentro de llaves cambian cómo se ven. Una pseudoclase como `:hover` o `:focus-visible` aplica estilos solo en cierto estado.
-- **Grid y Flexbox.** Grid acomoda en filas y columnas a la vez, útil para un formulario de dos columnas. Flexbox acomoda en una sola dirección, útil para una fila con un botón y un mensaje.
+- **CSS básico.** Un selector elige elementos (`.reserva-grid` elige los que tienen esa clase) y las declaraciones dentro de llaves cambian cómo se ven. Una pseudoclase como `:hover` o `.reserva-boton:focus-visible` aplica estilos solo en cierto estado.
+- **Grid y Flexbox.** Grid acomoda en filas y columnas a la vez, útil para un formulario de dos columnas (`display: grid; grid-template-columns: 1fr 1fr; gap: 12px;`). Flexbox acomoda en una sola dirección, útil para una fila con un botón y un mensaje (`display: flex; align-items: center;`).
 
 ## Qué vas a hacer
 
@@ -47,11 +52,11 @@ Un formulario armado con `<div>` y `<span>` se ve bien con mouse, pero no funcio
 npm run check:paso1
 ```
 
-Para la U1 basta con que pasen `CA-1.1` y `CA-1.2`; `CA-1.3` queda en rojo hasta que hagas el CSS.
+Para la U1 basta con que pasen `CA-1.1` y `CA-1.2`; `CA-1.3` queda en rojo hasta que hagas el CSS. Puedes verificar solo los requisitos de la Unidad 1 con `npm run check:u1`.
 
 Si te trabas, abre la [pista 1](hints/1.md). Cada pista da un poco más que la anterior; la pista 3 trae un esqueleto, nunca la respuesta completa.
 
-## Respuestas de autoevaluación
+## Respuestas de autoevaluación («Al terminar»)
 
 1. Con `<button>` reporta rol `button` y nombre **Confirmar reserva**. Con el `<div>` reportaba un elemento genérico sin rol útil, por eso el teclado y el lector de pantalla lo ignoraban.
 2. `CA-1.1` falla porque el campo se queda sin nombre accesible y `getByRole("spinbutton", { name: /cantidad de personas/i })` ya no lo encuentra. El texto sigue en pantalla, pero no está conectado al campo.

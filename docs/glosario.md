@@ -18,6 +18,10 @@ Atributos ARIA para conectar validaciones con lectores de pantalla y pruebas. [`
 
 Patrón estándar para estructurar pruebas automatizadas en [Vitest](https://vitest.dev/): primero preparas los datos (**Arrange**), luego ejecutas la función o acción del usuario (**Act**) y al final compruebas el resultado esperado (**Assert**).
 
+## CI (Integración Continua)
+
+Práctica de ejecutar automáticamente las pruebas y verificaciones de estilo en una máquina limpia cada vez que subes cambios con `git push` o abres un Pull Request, usando herramientas como [GitHub Actions](https://docs.github.com/es/actions/about-github-actions/understanding-github-actions). Revisa la guía visual en [docs/ci.md](ci.md).
+
 ## Componente
 
 Función de JavaScript con nombre en mayúscula que devuelve JSX y se usa como una etiqueta, por ejemplo `<Saludo />` ([React: Tu primer componente](https://es.react.dev/learn/your-first-component)). Una interfaz de React es un árbol de componentes que se pasan datos entre sí.
@@ -86,18 +90,18 @@ Familia de consultas de Testing Library ([Testing Library: `ByRole`](https://tes
 
 Directiva de React y Next.js ([Next.js: Server and Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components)) que se coloca en la primera línea de un archivo para marcar que ese componente corre en el navegador (porque usa `useState`, `useEffect` o eventos del usuario). Marca la frontera entre cliente y servidor, así que ningún archivo con `"use client"` debe importar módulos que guarden llaves o secretos del servidor. Vite, que usa este on-ramp, ignora la directiva; el Paso 4 la pide para practicar la convención de Next.js.
 
-## CI (Integración Continua)
+## `useEffect`
 
-Práctica de ejecutar automáticamente las pruebas y verificaciones de estilo en una máquina limpia cada vez que subes cambios con `git push` o abres un Pull Request, usando herramientas como [GitHub Actions](https://docs.github.com/es/actions/about-github-actions/understanding-github-actions). Revisa la guía visual en [docs/ci.md](ci.md).
+Hook de React que ejecuta código después de dibujar, por ejemplo una búsqueda ([React: useEffect](https://es.react.dev/reference/react/useEffect)). Vuelve a correr cuando cambia algún valor de su lista de dependencias. La función que devuelves es la limpieza: corre antes de la siguiente ejecución y cuando el componente desaparece, y ahí se cancela lo que quedó pendiente.
 
 ## Versión con un bug
 
 En el Paso 5, una copia de `calcularTotalConDescuento` con un error a propósito. `npm run check:paso5` corre tus tests contra cada versión con un bug; si todos siguen en verde, tus tests no distinguen la función correcta de una rota.
 
-## `useEffect`
-
-Hook de React que ejecuta código después de dibujar, por ejemplo una búsqueda ([React: useEffect](https://es.react.dev/reference/react/useEffect)). Vuelve a correr cuando cambia algún valor de su lista de dependencias. La función que devuelves es la limpieza: corre antes de la siguiente ejecución y cuando el componente desaparece, y ahí se cancela lo que quedó pendiente.
-
 ## Vite
 
 La herramienta que levanta el servidor de desarrollo y arma el proyecto para producción ([vite.dev](https://vite.dev/guide/)). `npm run dev` recarga la página cada vez que guardas un archivo y `npm run build` genera la carpeta `dist` con el JavaScript que descarga el usuario.
+
+## Zod (`safeParse` y `superRefine`)
+
+Biblioteca de validación de esquemas para TypeScript ([zod.dev](https://zod.dev/)). Declaras la forma y las reglas de un objeto (por ejemplo `z.coerce.number().positive()`) y obtienes el tipo estático con `z.infer`. `safeParse` valida sin lanzar excepciones y devuelve `{ success: true, data }` o `{ success: false, error }`. `superRefine` permite escribir reglas que comparan varios campos entre sí y asignar cada error al campo exacto con `ctx.addIssue({ code: "custom", path: [...], message: "..." })`.

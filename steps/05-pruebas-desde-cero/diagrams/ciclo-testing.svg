@@ -48,8 +48,8 @@
 
   <!-- Caja Roja: Código con bug -->
   <rect x="32" y="218" width="412" height="96" rx="10" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.5"/>
-  <rect x="46" y="230" width="132" height="20" rx="4" fill="#FEE2E2"/>
-  <text x="112" y="244" fill="#B91C1C" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">ROJO ANTE UNA VERSIÓN CON UN BUG</text>
+  <rect x="46" y="230" width="184" height="20" rx="4" fill="#FEE2E2"/>
+  <text x="138" y="244" fill="#B91C1C" font-size="10" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">ROJO CON VERSIONES CON BUG</text>
   <text x="46" y="268" fill="#0F172A" font-size="12" font-weight="700" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">versión con un bug (80, 25)</text>
   <text x="46" y="288" fill="#7F1D1D" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">Devuelve 100 (sumó 20 en lugar de restarlo)</text>
   <text x="46" y="304" fill="#7F1D1D" font-size="11" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">La prueba alerta antes de llegar a producción.</text>

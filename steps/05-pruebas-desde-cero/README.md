@@ -14,6 +14,12 @@ Este paso toma unos 40 minutos.
 
 Probar a mano haciendo clic se vuelve lento cuando el proyecto crece, y en el curso cada entrega corre tests automáticos en CI. [Vitest](https://vitest.dev/guide/) ejecuta funciones y verifica resultados en milisegundos, y [Testing Library](https://testing-library.com/docs/react-testing-library/intro/) hace lo mismo con componentes. Un test útil sigue el patrón Arrange, Act, Assert (preparar, ejecutar, comprobar) y, sobre todo, se pone en rojo cuando el código tiene un bug. Un test que pasa siempre no protege nada. Por eso aquí tus tests se corren también contra dos versiones con un bug de la misma función.
 
+## Lo mínimo que necesitas saber
+
+- **`describe`, `it` y `expect`.** `describe("nombre", () => { ... })` agrupa pruebas relacionadas, `it("qué comprueba", () => { ... })` define cada caso y `expect(valor).toBe(esperado)` falla si el resultado no coincide.
+- **Probar errores con `toThrow`.** Para verificar que una función lanza un error ante datos inválidos, pásala dentro de una función anónima: `expect(() => calcularTotalConDescuento(-10, 15)).toThrow(RangeError)`. Si llamas a la función fuera de `() =>`, el error rompe el test antes de llegar a `expect`.
+- **Probar componentes con `render` y `getByRole`.** `render(<ResumenDescuento precioBase={200} />)` dibuja el componente en memoria y `screen.getByRole("spinbutton", { name: /descuento/i })` busca controles tal como los percibe una persona, para luego interactuar con `userEvent`.
+
 ## Qué vas a hacer
 
 - **Leer.** Abre [calcularDescuento.ts](../../src/paso05-pruebas/calcularDescuento.ts) y escribe en papel qué debería devolver con tres o cuatro entradas distintas, incluyendo entradas inválidas. En la pestaña **Paso 5** puedes comparar la función correcta con la versión A.
@@ -43,7 +49,7 @@ npm run check:paso5
 
 Si te trabas, abre la [pista 1](hints/1.md). Cada pista da un poco más que la anterior; la pista 3 trae un esqueleto, nunca la respuesta completa.
 
-## Respuestas de autoevaluación
+## Respuestas de autoevaluación («Al terminar»)
 
 1. Por ejemplo, `expect(calcularTotalConDescuento(120, 0)).toBe(120)`. Con 0 % sumar o restar cero da lo mismo, y el dato es válido, así que ninguna versión con un bug se distingue. Pasa siempre y no detecta nada.
 2. Una entrada cuyo total tenga un tercer decimal de 5 o más. Por ejemplo, precio `1.25` con `10` % da `1.125`; la función correcta devuelve `1.13` y redondeando hacia abajo saldría `1.12`. Ojo con valores como `0.495`, que en binario quedan un poco por debajo y JavaScript los redondea a `0.49`.

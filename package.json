@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "check": "npm run typecheck && vitest run --exclude tests/paso05.test.tsx && node scripts/check-paso5.mjs",
+    "check:u1": "npm run typecheck && vitest run tests/paso00.test.tsx tests/paso02.test.tsx tests/paso03.test.ts && vitest run tests/paso01.test.tsx -t \"CA-1.1|CA-1.2\" && node scripts/check-paso5.mjs",
     "check:paso0": "npm run typecheck && vitest run tests/paso00.test.tsx",
     "check:paso1": "npm run typecheck && vitest run tests/paso01.test.tsx",
     "check:paso2": "npm run typecheck && vitest run tests/paso02.test.tsx",

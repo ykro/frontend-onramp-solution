@@ -48,7 +48,7 @@ npm run check:paso2
 
 Si te trabas, abre la [pista 1](hints/1.md). Cada pista da un poco más que la anterior; la pista 3 trae un esqueleto, nunca la respuesta completa.
 
-## Respuestas de autoevaluación
+## Respuestas de autoevaluación («Al terminar»)
 
 1. La pantalla no cambiaría, por la misma razón que con `push`; `splice` modifica el mismo arreglo. `filter` devuelve uno nuevo, por ejemplo `setGastos((prev) => prev.filter((g) => g.id !== id))`.
 2. Porque cambia en cada render. React cree que todas las filas son nuevas, las destruye y las vuelve a crear, y se pierden las notas y el foco. La `key` debe ser única y también estable.

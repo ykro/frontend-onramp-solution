@@ -26,10 +26,10 @@
     <text x="688" y="220" font-size="14" fill="#44403c">ListaGastos.tsx</text>
     <rect x="30" y="262" width="296" height="130" rx="12" fill="#ffffff" stroke="#d6d3d1"/>
     <rect x="30" y="262" width="6" height="130" rx="3" fill="#1d4ed8"/>
-    <text x="52" y="294" font-size="13" font-weight="700" fill="#1d4ed8">PASO 3 · 20 MIN</text>
+    <text x="52" y="294" font-size="13" font-weight="700" fill="#1d4ed8">PASO 3 · 35 MIN</text>
     <text x="52" y="324" font-size="19" font-weight="700" fill="#1c1917">Tipos y formularios</text>
-    <text x="52" y="352" font-size="14" fill="#44403c">texto del input a número sin as</text>
-    <text x="52" y="372" font-size="14" fill="#44403c">precioSeguro.ts</text>
+    <text x="52" y="352" font-size="14" fill="#44403c">narrowing sin as y esquema Zod</text>
+    <text x="52" y="372" font-size="14" fill="#44403c">precioSeguro.ts y filtroPrecio.ts</text>
     <rect x="348" y="262" width="296" height="130" rx="12" fill="#ffffff" stroke="#d6d3d1"/>
     <rect x="348" y="262" width="6" height="130" rx="3" fill="#1d4ed8"/>
     <text x="370" y="294" font-size="13" font-weight="700" fill="#1d4ed8">PASO 4 · 45 MIN</text>
@@ -40,7 +40,7 @@
     <rect x="666" y="262" width="6" height="130" rx="3" fill="#1d4ed8"/>
     <text x="688" y="294" font-size="13" font-weight="700" fill="#1d4ed8">PASO 5 · 40 MIN</text>
     <text x="688" y="324" font-size="19" font-weight="700" fill="#1c1917">Tests desde cero</text>
-    <text x="688" y="352" font-size="14" fill="#44403c">rojo ante una versión con un bug</text>
+    <text x="688" y="352" font-size="14" fill="#44403c">rojo ante dos versiones con un bug</text>
     <text x="688" y="372" font-size="14" fill="#44403c">tests/paso05.test.tsx</text>
     <text x="30" y="444" font-size="15" fill="#44403c">Ver cada paso: npm run dev   ·   Verificar: npm run check:pasoN   ·   Compilar: npm run build</text>
   </g>

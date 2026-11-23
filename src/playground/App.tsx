@@ -3,6 +3,7 @@ import { Saludo } from "../paso00-hola/Saludo";
 import { TarjetaReserva } from "../paso01-html-accesibilidad-y-css/TarjetaReserva";
 import { ListaGastos } from "../paso02-estado-inmutable/ListaGastos";
 import { leerPrecioSeguro } from "../paso03-tipos-y-formularios/precioSeguro";
+import { validarFiltro } from "../paso03-tipos-y-formularios/filtroPrecio";
 import { BuscadorRapido } from "../paso04-fetch-y-frontera/BuscadorRapido";
 import { calcularTotalConDescuento } from "../paso05-pruebas/calcularDescuento";
 import { versionA } from "../paso05-pruebas/versiones";
@@ -49,7 +50,11 @@ const TABS: { id: PasoId; titulo: string; resumen: string }[] = [
 
 function VistaPrecioSeguro() {
   const [texto, setTexto] = useState("");
+  const [minimo, setMinimo] = useState("50");
+  const [maximo, setMaximo] = useState("120");
   const resultado = leerPrecioSeguro(texto);
+  const resultadoFiltro = validarFiltro({ minimo, maximo });
+
   return (
     <section aria-labelledby="titulo-paso3">
       <h2 id="titulo-paso3">Prueba leerPrecioSeguro</h2>
@@ -59,6 +64,55 @@ function VistaPrecioSeguro() {
         Devuelve: <code>{resultado === null ? "null" : String(resultado)}</code> (tipo{" "}
         <code>{resultado === null ? "null" : typeof resultado}</code>)
       </p>
+
+      <hr style={{ margin: "20px 0", border: "none", borderTop: "1px solid #d6d3cb" }} />
+
+      <h3>Prueba validarFiltro (Zod)</h3>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+          gap: "12px",
+          marginBottom: "12px",
+        }}
+      >
+        <label style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          <span>Mínimo</span>
+          <input
+            type="text"
+            value={minimo}
+            onChange={(e) => setMinimo(e.target.value)}
+            style={{
+              padding: "8px 10px",
+              border: "1px solid #cbd5e1",
+              borderRadius: "6px",
+            }}
+          />
+        </label>
+        <label style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          <span>Máximo</span>
+          <input
+            type="text"
+            value={maximo}
+            onChange={(e) => setMaximo(e.target.value)}
+            style={{
+              padding: "8px 10px",
+              border: "1px solid #cbd5e1",
+              borderRadius: "6px",
+            }}
+          />
+        </label>
+      </div>
+      {resultadoFiltro.ok ? (
+        <p style={{ color: "#15803d", margin: 0 }}>
+          Filtro válido:{" "}
+          <code>{JSON.stringify(resultadoFiltro.filtro)}</code>
+        </p>
+      ) : (
+        <p role="alert" style={{ color: "#b91c1c", margin: 0 }}>
+          Errores: <code>{JSON.stringify(resultadoFiltro.errores)}</code>
+        </p>
+      )}
     </section>
   );
 }

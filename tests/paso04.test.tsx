@@ -56,13 +56,12 @@ describe("Paso 4: Fetch, cancelación y frontera cliente/servidor", () => {
       process.cwd(),
       "src/paso04-fetch-y-frontera/BuscadorRapido.tsx"
     );
-    const codigo = fs.readFileSync(archivo, "utf-8");
+    const codigo = fs
+      .readFileSync(archivo, "utf-8")
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/\/\/.*$/gm, "");
 
-    expect(
-      codigo.trimStart().startsWith('"use client";') ||
-        codigo.trimStart().startsWith("'use client';")
-    ).toBe(true);
-    expect(codigo).not.toMatch(/secreto\.server/);
-    expect(codigo).not.toMatch(/API_SECRET_KEY/);
+    expect(codigo.trimStart()).toMatch(/^["']use client["'];?/);
+    expect(codigo).not.toMatch(/secreto\.server|API_SECRET_KEY/);
   });
 });

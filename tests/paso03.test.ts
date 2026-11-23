@@ -13,10 +13,13 @@ describe("Paso 3: Tipos y formularios en TypeScript", () => {
     expect(leerPrecioSeguro("abc")).toBeNull();
     expect(leerPrecioSeguro("0")).toBeNull();
     expect(leerPrecioSeguro("-15")).toBeNull();
-    const codigo = fs.readFileSync(
-      path.resolve(process.cwd(), "src/paso03-tipos-y-formularios/precioSeguro.ts"),
-      "utf-8"
-    );
+    const codigo = fs
+      .readFileSync(
+        path.resolve(process.cwd(), "src/paso03-tipos-y-formularios/precioSeguro.ts"),
+        "utf-8"
+      )
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/\/\/.*$/gm, "");
     expect(codigo).not.toMatch(/\bas number\b/);
   });
 

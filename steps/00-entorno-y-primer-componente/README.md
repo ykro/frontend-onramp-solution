@@ -51,7 +51,7 @@ npm run check:paso0
 
 Si te trabas, abre la [pista 1](hints/1.md). Cada pista da un poco más que la anterior; la pista 3 trae un esqueleto, nunca la respuesta completa.
 
-## Respuestas de autoevaluación
+## Respuestas de autoevaluación («Al terminar»)
 
 1. Tocaste `App.tsx`, que es quien usa `<Saludo nombre="..." />`. El componente no decide su nombre; lo recibe por props desde quien lo dibuja. Así el mismo componente sirve para cualquier persona.
 2. Vuelve a `Clics: 0`. El estado vive en la memoria de la página; al recargar, React arranca el componente desde cero con el valor inicial de `useState`. Para que sobreviva haría falta guardarlo en otro lado, como `localStorage` o un servidor.

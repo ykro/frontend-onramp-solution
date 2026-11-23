@@ -1,5 +1,11 @@
 import { type FormEvent, useState } from "react";
-import { leerPrecioSeguro } from "../paso03-tipos-y-formularios/precioSeguro";
+
+function leerMontoPositivo(texto: string): number | null {
+  const limpio = texto.trim();
+  const n = Number(limpio);
+  if (!limpio || !Number.isFinite(n) || n <= 0) return null;
+  return n;
+}
 
 export interface Gasto {
   id: string;
@@ -74,7 +80,7 @@ export function ListaGastos() {
   function manejarAgregar(evento: FormEvent<HTMLFormElement>) {
     evento.preventDefault();
     const conceptoLimpio = concepto.trim();
-    const monto = leerPrecioSeguro(montoTexto);
+    const monto = leerMontoPositivo(montoTexto);
 
     if (conceptoLimpio === "" || monto === null) {
       setError("Escribe un concepto y un monto mayor a 0.");

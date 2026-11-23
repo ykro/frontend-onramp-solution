@@ -35,7 +35,14 @@ function testsSinComprobacion() {
       const nombre = nodo.arguments[0].getText(fuente);
       const llama = cuerpo.includes("calcularTotalConDescuento(") || cuerpo.includes("render(");
       if (!llama || !cuerpo.includes("expect(")) debiles.push(nombre);
-      if (cuerpo.includes("render(") && cuerpo.includes("getByRole(")) hayTestDeComponente = true;
+      if (
+        cuerpo.includes("render(") &&
+        (cuerpo.includes("getByRole(") ||
+          cuerpo.includes("findByRole(") ||
+          cuerpo.includes("getAllByRole("))
+      ) {
+        hayTestDeComponente = true;
+      }
     }
     ts.forEachChild(nodo, visitar);
   };
@@ -50,9 +57,9 @@ function correr(nombre, version) {
   if (version) env.PASO5_VERSION = version;
   else delete env.PASO5_VERSION;
   const r = spawnSync(
-    "npx",
-    ["vitest", "run", ARCHIVO, "--reporter=json", `--outputFile=${salida}`],
-    { env, encoding: "utf-8", shell: process.platform === "win32" }
+    process.execPath,
+    [path.resolve("node_modules/vitest/vitest.mjs"), "run", ARCHIVO, "--reporter=json", `--outputFile=${salida}`],
+    { encoding: "utf8", env }
   );
   let reporte = null;
   try {

@@ -18,7 +18,7 @@ Todo lo que escribe una persona en un `<input>` llega como texto, aunque el camp
 
 - **Uniones de tipos.** `number | null` significa «un número o nada». TypeScript te obliga a revisar el `null` antes de usar el valor como número.
 - **Narrowing.** Después de `if (typeof x === "number")` o de `if (resultado === null) return`, TypeScript sabe qué tipo queda en las líneas siguientes. La revisión corre de verdad, a diferencia de `as`.
-- **Zod.** En el curso no escribirás esos `if` a mano. Un esquema de [Zod](https://zod.dev) declara las reglas (`z.coerce.number().positive()`) y `safeParse` devuelve el dato con su tipo o la lista de errores, sin lanzar. Una regla que compara dos campos va en `superRefine`. En la U1, React Hook Form usa ese mismo esquema para todo el formulario.
+- **Zod.** En el curso no escribirás esos `if` a mano. Un esquema de [Zod](https://zod.dev) declara las reglas (`z.coerce.number().positive()`) y `safeParse` devuelve el dato con su tipo o la lista de errores, sin lanzar. Una regla que compara dos campos va en `superRefine` y registra el fallo con `ctx.addIssue({ code: "custom", path: ["maximo"], message: "..." })`. En la U1, React Hook Form usa ese mismo esquema para todo el formulario.
 
 ## Qué vas a hacer
 
@@ -37,7 +37,7 @@ Todo lo que escribe una persona en un `<input>` llega como texto, aunque el camp
 
 1. ¿Qué devuelve tu función con `"Infinity"` y con `"1e3"`? ¿Te parece correcto para un monto en quetzales?
 2. Si el formulario aceptara montos con coma decimal (`"45,50"`), ¿qué devolvería tu función hoy y dónde harías el cambio?
-3. ¿Por qué la función devuelve `number | null` en lugar de lanzar un error? Piensa en quién la llama y qué hace con el resultado.
+3. ¿Por qué `leerPrecioSeguro` devuelve `number | null` y `FiltroPrecio.safeParse` devuelve `{ success: false, error }` en lugar de lanzar una excepción? Además, ¿por qué la comparación entre `maximo` y `minimo` va en `superRefine` y no en una regla del campo `maximo`?
 4. Explica en tres líneas, con tus palabras, qué cambiaste y por qué. Si no puedes, vuelve a la pista 1 antes de seguir.
 
 ## Cómo verificar
@@ -48,9 +48,9 @@ npm run check:paso3
 
 Si te trabas, abre la [pista 1](hints/1.md). Cada pista da un poco más que la anterior; la pista 3 trae un esqueleto, nunca la respuesta completa.
 
-## Respuestas de autoevaluación
+## Respuestas de autoevaluación («Al terminar»)
 
 1. `"Infinity"` devuelve `null` porque `Number.isFinite` lo rechaza. `"1e3"` devuelve `1000`, que es un número válido en JavaScript; si no quieres aceptarlo, necesitas una expresión regular que permita solo dígitos y un punto.
 2. Hoy devuelve `null`, porque `Number("45,50")` es `NaN`. El cambio va dentro de `leerPrecioSeguro`, reemplazando la coma por punto antes de convertir, para que todos los formularios lo hereden.
-3. Un monto inválido es algo esperado en un formulario, no una falla del programa. Con `null`, quien llama decide qué mensaje mostrar con un `if`, sin `try` y `catch`, y TypeScript le obliga a revisar el caso.
-4. Respuesta personal. Debe mencionar que el input siempre entrega texto, que `as` no valida nada y que los `if` con `return null` hacen la validación y el narrowing.
+3. Un monto inválido es algo esperado en un formulario, no una falla del programa. Devolver `null` o `{ success: false, error }` deja que quien llama muestre mensajes por campo con un `if`, sin `try` ni `catch`, y TypeScript le obliga a revisar el caso. La comparación entre `maximo` y `minimo` va en `superRefine` sobre el objeto completo porque una regla en un solo campo no tiene acceso al valor del otro campo, y `ctx.addIssue({ code: "custom", path: ["maximo"], ... })` permite asignar el error al campo correcto.
+4. Respuesta personal. Debe mencionar que el input siempre entrega texto, que `as` no valida nada, que los `if` con `return null` validan y hacen narrowing en `leerPrecioSeguro`, y que en `FiltroPrecio` Zod convierte y exige positivos con `z.coerce.number().positive()`, valida con `safeParse` y compara ambos campos en `superRefine` apuntando el error a `maximo`.

@@ -30,9 +30,13 @@ Este repositorio contiene la solución verificada de [Frontend On-Ramp](https://
 ## Verificación
 
 1. `npm install` con Node 24.
-2. `npm run check:paso0` hasta `npm run check:paso5`, o `npm run check` para todos.
+2. `npm run check:paso0` hasta `npm run check:paso5`, `npm run check:u1` para los requisitos de la Unidad 1, o `npm run check` para todos.
 3. `npm run build` para confirmar que el proyecto compila.
 4. `npm run dev` para ver los seis pasos resueltos en el navegador.
+
+## Errores comunes al preparar el entorno
+
+Si `npm install` o `npm run dev` fallan, consulta la tabla de diagnóstico en [ykro/frontend-onramp](https://github.com/ykro/frontend-onramp#errores-comunes-al-preparar-el-entorno).
 
 ## Repositorios relacionados
 

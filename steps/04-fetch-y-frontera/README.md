@@ -60,7 +60,7 @@ npm run build
 
 Si te trabas, abre la [pista 1](hints/1.md). Cada pista da un poco más que la anterior; la pista 3 trae un esqueleto, nunca la respuesta completa.
 
-## Respuestas de autoevaluación
+## Respuestas de autoevaluación («Al terminar»)
 
 1. Falla `await response.json()`, que rechaza la promesa con un `SyntaxError` porque el texto no se puede interpretar como JSON. `response.ok` era `true`, así que esa revisión no lo detecta; hace falta un `try` o validar el `Content-Type`.
 2. No. Sin limpieza nadie llama a `abort()`, así que la señal de la primera búsqueda nunca queda abortada y su respuesta lenta llega y pisa la pantalla. La revisión solo sirve si alguien aborta.
